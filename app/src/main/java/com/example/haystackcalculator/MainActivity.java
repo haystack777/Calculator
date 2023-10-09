@@ -14,7 +14,7 @@ import java.text.DecimalFormat;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView HistoryDisplay, MainDisplay;
-    Button buttonAllClean, buttonDel, buttonSign;
+    Button buttonAllCleanbutton, buttonDel, buttonSign;
     Button buttonDivision, buttonMultiplication, buttonMinus,
             buttonPlus, buttonEquals, buttonDot;
     Button button1, button2, button3, button4, button5, button6,
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         HistoryDisplay = (TextView) findViewById(R.id.history);
         MainDisplay = (TextView) findViewById(R.id.result);
 
-        buttonAllClean = (Button) findViewById(R.id.buttonAC);
+        buttonAllCleanbutton = (Button) findViewById(R.id.buttonAC);
         buttonDel = (Button) findViewById(R.id.buttonDel);
         buttonSign = (Button) findViewById(R.id.buttonSign);
 
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             MainDisplay.setText(textMainDisplay);
         }
 
-        buttonAllClean.setOnClickListener(new View.OnClickListener() {
+        buttonAllCleanbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 num1 = "";
@@ -768,7 +768,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // определяем нажатую кнопку и выполняем соответствующую операцию
             // в oper пишем операцию, потом будем использовать в выводе
             switch (v.getId()) {
-               *//* case R.id.buttonAllClean:
+               *//* case R.id.buttonAllCleanbutton:
                     oper = "0";
                     break;*//*
                 case R.id.buttonDel:
