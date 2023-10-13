@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main4);
         WidgetHolder widgetHolder = new WidgetHolder();
 
-
+    // ghgjhghhj
 
        // Context context = getContext
      //   WidgetHolder widgetHolder1 = new WidgetHolder(this);
