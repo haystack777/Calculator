@@ -370,7 +370,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     textMainDisplay = "";
                 }
 
-               // textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
+                // textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
 
                 pressPlus = true;
                 setHistoryDisplay();
@@ -458,9 +458,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (pressEquals & !result.equals("")) {
                     textMainDisplay = "";
                 }
-
-
-
 
 
                 pressEquals = true;
