@@ -38,7 +38,6 @@ public class WidgetHolder {
         button8 = context.findViewById(R.id.button8);
         button9 = context.findViewById(R.id.button9);
         button0 = context.findViewById(R.id.button0);
-
     }
 
     public TextView getHistoryDisplayTextView() {
