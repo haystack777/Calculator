@@ -26,9 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
-        WidgetHolder widgetHolder = new WidgetHolder();
-
-    // ghgjhghhj
+        WidgetHolder widgetHolder = new WidgetHolder(this);
 
        // Context context = getContext
      //   WidgetHolder widgetHolder1 = new WidgetHolder(this);
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
       /*  // находим элементы
-        widgetHolder.HistoryDisplay = (TextView) findViewById(R.id.history);
+        widgetHolder.historyDisplayTextViewTextView = (TextView) findViewById(R.id.history);
         MainDisplay = (TextView) findViewById(R.id.result);
 
         allCleanButton = (Button) findViewById(R.id.buttonAC);
@@ -61,18 +59,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button9 = (Button) findViewById(R.id.button9);
         button0 = (Button) findViewById(R.id.button0);*/
 
-        widgetHolder.MainDisplay.setText(textMainDisplay);
-        setHistoryDisplay();
-
+        widgetHolder.mainDisplayTextView.setText(textMainDisplay);
+       // widgetHolder.historyDisplayTextView.setText(textMainDisplay);
+        setHistoryDisplayTextView();
         // Для поворота экрана
         if (savedInstanceState != null) {
             textMainDisplay = savedInstanceState.getString(KEY_COUNT1);
             result = savedInstanceState.getString(KEY_COUNT2);
             pressPlus = savedInstanceState.getBoolean(KEY_COUNT3);
-            widgetHolder.MainDisplay.setText(textMainDisplay);
+            widgetHolder.mainDisplayTextView.setText(textMainDisplay);
         } else {
             textMainDisplay = "0";
-            widgetHolder.MainDisplay.setText(textMainDisplay);
+            widgetHolder.mainDisplayTextView.setText(textMainDisplay);
         }
 
         widgetHolder.allCleanButton.setOnClickListener(new View.OnClickListener() {
@@ -81,17 +79,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 num1 = "";
                 num2 = "";
                 if (!textMainDisplay.equals("0")) {
-                    widgetHolder.MainDisplay.setText(textMainDisplay = "0");
+                    widgetHolder.mainDisplayTextView.setText(textMainDisplay = "0");
                     num1 = "";
                     num2 = "";
                     result = "";
                     num12 = 0;
                     num22 = 0;
                     result2 = 0;
-                    //  widgetHolder.HistoryDisplay.setText(textMainDisplay);
-                    //  widgetHolder.HistoryDisplay.setText("num1=" + num1 + " num2=" + num2);
+                    //  widgetHolder.historyDisplayTextView.setText(textMainDisplay);
+                    //  widgetHolder.historyDisplayTextView.setText("num1=" + num1 + " num2=" + num2);
                 }
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
        /* public void wasLastPress() {
@@ -129,14 +127,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 if (!textMainDisplay.equals("0") & textMainDisplay.length() > 0) {
-                    widgetHolder.MainDisplay.setText(textMainDisplay = textMainDisplay.substring(0, textMainDisplay.length() - 1));
+                    widgetHolder.mainDisplayTextView.setText(textMainDisplay = textMainDisplay.substring(0, textMainDisplay.length() - 1));
                 }
                 if (textMainDisplay.equals("")) {
-                    widgetHolder.MainDisplay.setText(textMainDisplay = "0");
+                    widgetHolder.mainDisplayTextView.setText(textMainDisplay = "0");
                 }
 
-                widgetHolder.HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplay();
+                widgetHolder.historyDisplayTextView.setText(textMainDisplay);
+                setHistoryDisplayTextView();
             }
         });
 
@@ -151,12 +149,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if (!textMainDisplay.contains(String.valueOf(s)) & !textMainDisplay.equals("0")) {
                     textMainDisplay = "-" + textMainDisplay;
-                    widgetHolder.MainDisplay.setText(textMainDisplay);
+                    widgetHolder.mainDisplayTextView.setText(textMainDisplay);
                 } else {
                     a = Integer.parseInt(textMainDisplay);
                     a = a * (-1);
                     textMainDisplay = String.valueOf(a);
-                    widgetHolder.MainDisplay.setText(textMainDisplay);
+                    widgetHolder.mainDisplayTextView.setText(textMainDisplay);
                 }
                 if (textMainDisplay.contains(String.valueOf(s)) & !result.equals("")) {
                     result = "-" + result;
@@ -179,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     a = a * (-1);
                     result = String.valueOf(a);
                 }*/
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -206,10 +204,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(result2);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    widgetHolder.MainDisplay.setText(textMainDisplay);
+                    widgetHolder.mainDisplayTextView.setText(textMainDisplay);
                 }
                 if (num2.equals("0")) {
-                    widgetHolder.MainDisplay.setText("ОШИБКА");
+                    widgetHolder.mainDisplayTextView.setText("ОШИБКА");
                 }
                 textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
 
@@ -220,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 pressDivision = true;
 
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -250,7 +248,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result2 = num12 * num22;
                     formatFloatPoint();
                     textMainDisplay = result;
-                    widgetHolder.MainDisplay.setText(textMainDisplay);
+                    widgetHolder.mainDisplayTextView.setText(textMainDisplay);
                 }
                 // условие 1*2= → 2*3 = → 6 = → 18
                 if (pressEquals & pressMultiplication & !result.equals("")) {
@@ -271,7 +269,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 pressMultiplication = true;
                 textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -301,7 +299,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(result2);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    widgetHolder.MainDisplay.setText(textMainDisplay);
+                    widgetHolder.mainDisplayTextView.setText(textMainDisplay);
                 }
                 textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
 
@@ -320,7 +318,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     num2 = textMainDisplay;
                 }
                 pressMinus = true;
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -352,7 +350,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(result2);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    widgetHolder.MainDisplay.setText(textMainDisplay);
+                    widgetHolder.mainDisplayTextView.setText(textMainDisplay);
                 }
 
                 // условие 1+2= → 3+4 = → 7 = → 11
@@ -373,7 +371,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
 
                 pressPlus = true;
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
 
         });
@@ -424,7 +422,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(result2);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    widgetHolder.MainDisplay.setText(result);
+                    widgetHolder.mainDisplayTextView.setText(result);
                 }
 
                 if (pressMultiplication & !num1.equals("") & !num2.equals("")) {
@@ -434,7 +432,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(result2);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    widgetHolder.MainDisplay.setText(result);
+                    widgetHolder.mainDisplayTextView.setText(result);
                 }
                 if (pressMinus & !num1.equals("") & !num2.equals("")) {
                     num12 = Double.parseDouble(num1);
@@ -443,7 +441,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(result2);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    widgetHolder.MainDisplay.setText(result);
+                    widgetHolder.mainDisplayTextView.setText(result);
                 }
                 if (pressPlus & !num1.equals("") & !num2.equals("")) {
                     num12 = Double.parseDouble(num1);
@@ -452,7 +450,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(result2);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    widgetHolder.MainDisplay.setText(result);
+                    widgetHolder.mainDisplayTextView.setText(result);
                 }
                 // Пробел после нажатого знака вычисления
                 if (pressEquals & !result.equals("")) {
@@ -461,7 +459,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
                 pressEquals = true;
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -470,9 +468,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 textMainDisplay = textMainDisplay + ".";
-                widgetHolder.MainDisplay.setText(textMainDisplay);
-                widgetHolder.HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplay();
+                widgetHolder.mainDisplayTextView.setText(textMainDisplay);
+                widgetHolder.historyDisplayTextView.setText(textMainDisplay);
+                setHistoryDisplayTextView();
             }
         });
 
@@ -484,10 +482,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     textMainDisplay = "";
                 }
                 textMainDisplay = textMainDisplay + 1;
-                widgetHolder.MainDisplay.setText(textMainDisplay);
-                //widgetHolder.HistoryDisplay.setText(textMainDisplay);
+                widgetHolder.mainDisplayTextView.setText(textMainDisplay);
+                //widgetHolder.historyDisplayTextView.setText(textMainDisplay);
 
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
      *//*   {
                 MainDisplay.setText(MainDisplay.getText() + "1");
@@ -503,8 +501,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 textMainDisplay = textMainDisplay + 2;
                 MainDisplay.setText(textMainDisplay);
-                widgetHolder.HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplay();
+                widgetHolder.historyDisplayTextView.setText(textMainDisplay);
+                setHistoryDisplayTextView();
             }
         });
 
@@ -516,9 +514,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 textMainDisplay = textMainDisplay + 3;
                 MainDisplay.setText(textMainDisplay);
-                widgetHolder.HistoryDisplay.setText(textMainDisplay);
+                widgetHolder.historyDisplayTextView.setText(textMainDisplay);
 
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -538,14 +536,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textMainDisplay = textMainDisplay + 4;
 
                 MainDisplay.setText(textMainDisplay);
-                widgetHolder.HistoryDisplay.setText(textMainDisplay);
+                widgetHolder.historyDisplayTextView.setText(textMainDisplay);
 
                 // условие 1+2= → 3+4 = → 7 = → 11
               *//*  if (!result.equals(textMainDisplay) & !pressPlus) {
                     num1 = textMainDisplay;
                 }*//*
 
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
 
         });
@@ -559,7 +557,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textMainDisplay = textMainDisplay + 5;
                 MainDisplay.setText(textMainDisplay);
                 HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -572,7 +570,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textMainDisplay = textMainDisplay + 6;
                 MainDisplay.setText(textMainDisplay);
                 HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -585,7 +583,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textMainDisplay = textMainDisplay + 7;
                 MainDisplay.setText(textMainDisplay);
                 HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -598,7 +596,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textMainDisplay = textMainDisplay + 8;
                 MainDisplay.setText(textMainDisplay);
                 HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -611,7 +609,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textMainDisplay = textMainDisplay + 9;
                 MainDisplay.setText(textMainDisplay);
                 HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -624,7 +622,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textMainDisplay = textMainDisplay + 0;
                 MainDisplay.setText(textMainDisplay);
                 HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
         */
@@ -677,17 +675,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (id == R.id.button0) {
             textMainDisplay = textMainDisplay + 0;
         }
-        WidgetHolder widgetHolder = new WidgetHolder();
-        widgetHolder.MainDisplay.setText(textMainDisplay);
+        WidgetHolder widgetHolder = new WidgetHolder(this);
+        widgetHolder.mainDisplayTextView.setText(textMainDisplay);
 
-        setHistoryDisplay();
+        setHistoryDisplayTextView();
 
     }
 
 
-    public void setHistoryDisplay() {
-        WidgetHolder widgetHolder = new WidgetHolder();
-        widgetHolder.HistoryDisplay.setText("num1=" + num1 + " num2=" + num2 + " result=" + result + " result2=" +
+    public void setHistoryDisplayTextView() {
+        WidgetHolder widgetHolder = new WidgetHolder(this);
+        widgetHolder.historyDisplayTextView.setText("num1=" + num1 + " num2=" + num2 + " result=" + result + " result2=" +
                 result2 + " num12=" + num12 + " num22=" + num22 + " textMainDisplay=" + textMainDisplay);
         
     }
