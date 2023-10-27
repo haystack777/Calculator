@@ -3,6 +3,7 @@ package com.example.haystackcalculator;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -26,19 +27,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
         WidgetHolder widgetHolder = new WidgetHolder(this);
-
-        TextView mainDisplayTextView = widgetHolder.getMainDisplayTextView();
-        TextView historyDisplayTextView = widgetHolder.getHistoryDisplayTextView();
-
-
-        // widgetHolder.setHistoryDisplayTextView();
-        // Context context = getContext
-        // WidgetHolder widgetHolder1 = new WidgetHolder(this);
-
-
-
+        
       /*  // находим элементы
-        widgetHolder.HistoryDisplay = (TextView) findViewById(R.id.history);
+        widgetHolder.historyDisplayTextViewTextView = (TextView) findViewById(R.id.history);
         MainDisplay = (TextView) findViewById(R.id.result);
 
         allCleanButton = (Button) findViewById(R.id.buttonAC);
@@ -63,18 +54,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button9 = (Button) findViewById(R.id.button9);
         button0 = (Button) findViewById(R.id.button0);*/
 
-        mainDisplayTextView.setText(textMainDisplay);
-        setHistoryDisplay();
-
+        widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
+       // widgetHolder.historyDisplayTextView.setText(textMainDisplay);
+        setHistoryDisplayTextView();
         // Для поворота экрана
         if (savedInstanceState != null) {
             textMainDisplay = savedInstanceState.getString(KEY_COUNT1);
             result = savedInstanceState.getString(KEY_COUNT2);
             isPressPlus = savedInstanceState.getBoolean(KEY_COUNT3);
-            mainDisplayTextView.setText(textMainDisplay);
+            widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
         } else {
             textMainDisplay = "0";
-            mainDisplayTextView.setText(textMainDisplay);
+            widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
         }
 
         widgetHolder.allCleanButton.setOnClickListener(new View.OnClickListener() {
@@ -83,17 +74,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 number1 = "";
                 number2 = "";
                 if (!textMainDisplay.equals("0")) {
-                    mainDisplayTextView.setText(textMainDisplay = "0");
+                    widgetHolder.getMainDisplayTextView().setText(textMainDisplay = "0");
                     number1 = "";
                     number2 = "";
                     result = "";
                     numberDouble1 = 0;
                     numberDouble2 = 0;
                     resultDouble = 0;
-                    //  widgetHolder.HistoryDisplay.setText(textMainDisplay);
-                    //  widgetHolder.HistoryDisplay.setText("num1=" + num1 + " num2=" + num2);
+                    //  widgetHolder.historyDisplayTextView.setText(textMainDisplay);
+                    //  widgetHolder.historyDisplayTextView.setText("number1=" + number1 + " number2=" + number2);
                 }
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
        /* public void wasLastPress() {
@@ -106,20 +97,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case R.id.buttonPlus:
                     oper = "+";
-                    result = num1;
+                    result = number1;
                     break;
                 case R.id.buttonMinus:
                     oper = "-";
-                    //     result = num1 - num2;
+                    //     result = number1 - number2;
                     break;
 
                 case R.id.button1:
                     oper = "1";
-                    //      result = num1 * num2;
+                    //      result = number1 * number2;
                     break;
                 case R.id.button2:
                     oper = "2";
-                    //      result = num1 / num2;
+                    //      result = number1 / number2;
                     break;//
                 default:
                     break;
@@ -131,14 +122,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 if (!textMainDisplay.equals("0") & textMainDisplay.length() > 0) {
-                    mainDisplayTextView.setText(textMainDisplay = textMainDisplay.substring(0, textMainDisplay.length() - 1));
+                    widgetHolder.getMainDisplayTextView().setText(textMainDisplay = textMainDisplay.substring(0, textMainDisplay.length() - 1));
                 }
                 if (textMainDisplay.equals("")) {
-                    mainDisplayTextView.setText(textMainDisplay = "0");
+                    widgetHolder.getMainDisplayTextView().setText(textMainDisplay = "0");
                 }
 
-                historyDisplayTextView.setText(textMainDisplay);
-                setHistoryDisplay();
+                widgetHolder.getHistoryDisplayTextView().setText(textMainDisplay);
+                setHistoryDisplayTextView();
             }
         });
 
@@ -153,12 +144,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if (!textMainDisplay.contains(String.valueOf(s)) & !textMainDisplay.equals("0")) {
                     textMainDisplay = "-" + textMainDisplay;
-                    mainDisplayTextView.setText(textMainDisplay);
+                   widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                 } else {
                     a = Integer.parseInt(textMainDisplay);
                     a = a * (-1);
                     textMainDisplay = String.valueOf(a);
-                    mainDisplayTextView.setText(textMainDisplay);
+                   widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                 }
                 if (textMainDisplay.contains(String.valueOf(s)) & !result.equals("")) {
                     result = "-" + result;
@@ -172,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     a = Integer.parseInt(result);
                     a = a * (-1);
                     result = String.valueOf(a);
-                    result2 = result2*2;
+                    resultDouble = resultDouble*2;
                 }*/
 
 
@@ -181,7 +172,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     a = a * (-1);
                     result = String.valueOf(a);
                 }*/
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -189,6 +180,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 // условие - запись в первое число если оно пусто
+
                 if (number1.equals("")) {
                     number1 = textMainDisplay;
                     textMainDisplay = "";
@@ -207,10 +199,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(resultDouble);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    mainDisplayTextView.setText(textMainDisplay);
+                   widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                 }
                 if (number2.equals("0")) {
-                    mainDisplayTextView.setText("ОШИБКА");
+                    widgetHolder.mainDisplayTextView.setText("ОШИБКА");
                 }
                 textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
 
@@ -221,7 +213,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 isPressDivision = true;
 
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -251,10 +243,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     resultDouble = numberDouble1 * numberDouble2;
                     formatFloatPoint();
                     textMainDisplay = result;
-                    mainDisplayTextView.setText(textMainDisplay);
+                   widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                 }
                 // условие 1*2= → 2*3 = → 6 = → 18
-                if (isPressEquals & isPressMultiplication & !result.equals("")) {
+                if (isPressEquals& isPressMultiplication & !result.equals("")) {
                     number1 = textMainDisplay;
                 }
 
@@ -266,13 +258,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                /*
                 // условие - результат вычисляется с новым введённым числом
                 if (!result.equals("")) {
-                    num1 = result;
-                    num2 = textMainDisplay;
+                    number1 = result;
+                    number2 = textMainDisplay;
                 }*/
 
                 isPressMultiplication = true;
                 textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -302,12 +294,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(resultDouble);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    mainDisplayTextView.setText(textMainDisplay);
+                   widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                 }
                 textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
 
                 // условие 5-2= → 3-2 = → 1 = → -1 → -3
-                if (isPressEquals & isPressMinus & !result.equals("")) {
+                if (isPressEquals& isPressMinus & !result.equals("")) {
                     number1 = textMainDisplay;
                 }
                 // условие 1+2+ → 3 = → 6 → 9 Вроде не нужно, но плюс без него не работает
@@ -321,7 +313,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     number2 = textMainDisplay;
                 }
                 isPressMinus = true;
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -353,11 +345,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(resultDouble);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    mainDisplayTextView.setText(textMainDisplay);
+                   widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                 }
 
                 // условие 1+2= → 3+4 = → 7 = → 11
-                if (isPressEquals & isPressPlus & !result.equals("")) {
+                if (isPressEquals& isPressPlus & !result.equals("")) {
                     number1 = textMainDisplay;
                 }
 
@@ -374,7 +366,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
 
                 isPressPlus = true;
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
 
         });
@@ -385,12 +377,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 // условие 1+2= → 3 = → 5 = → 7 (ОСНОВНОЕ СУММИРОВАНИЕ)
                 // условие - запись в первое Число если оно пусто
-                //& !result.equals(num1) можно убрать???
+                //& !result.equals(number1) можно убрать???
                 if (!number2.equals("") & !result.equals(number1)) {
                     number1 = textMainDisplay;
                 }
-               /* if (!num2.equals("") & !result.equals(num1)) {
-                    num2 = textMainDisplay;
+               /* if (!number2.equals("") & !result.equals(number1)) {
+                    number2 = textMainDisplay;
                 }*/
 
                 // условие 1+2= → 3+4 = → 7 = → 11
@@ -425,7 +417,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(resultDouble);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    mainDisplayTextView.setText(result);
+                    widgetHolder.mainDisplayTextView.setText(result);
                 }
 
                 if (isPressMultiplication & !number1.equals("") & !number2.equals("")) {
@@ -435,7 +427,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(resultDouble);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    mainDisplayTextView.setText(result);
+                    widgetHolder.mainDisplayTextView.setText(result);
                 }
                 if (isPressMinus & !number1.equals("") & !number2.equals("")) {
                     numberDouble1 = Double.parseDouble(number1);
@@ -444,7 +436,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(resultDouble);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    mainDisplayTextView.setText(result);
+                    widgetHolder.mainDisplayTextView.setText(result);
                 }
                 if (isPressPlus & !number1.equals("") & !number2.equals("")) {
                     numberDouble1 = Double.parseDouble(number1);
@@ -453,16 +445,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(resultDouble);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    mainDisplayTextView.setText(result);
+                    widgetHolder.mainDisplayTextView.setText(result);
                 }
                 // Пробел после нажатого знака вычисления
-                if (isPressEquals & !result.equals("")) {
+                if (isPressEquals& !result.equals("")) {
                     textMainDisplay = "";
                 }
 
 
-                isPressEquals = true;
-                setHistoryDisplay();
+                isPressEquals= true;
+                setHistoryDisplayTextView();
             }
         });
 
@@ -471,9 +463,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 textMainDisplay = textMainDisplay + ".";
-                mainDisplayTextView.setText(textMainDisplay);
-                historyDisplayTextView.setText(textMainDisplay);
-                setHistoryDisplay();
+               widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
+                widgetHolder.historyDisplayTextView.setText(textMainDisplay);
+                setHistoryDisplayTextView();
             }
         });
 
@@ -485,10 +477,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     textMainDisplay = "";
                 }
                 textMainDisplay = textMainDisplay + 1;
-                widgetHolder.MainDisplay.setText(textMainDisplay);
-                //widgetHolder.HistoryDisplay.setText(textMainDisplay);
+               widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
+                //widgetHolder.historyDisplayTextView.setText(textMainDisplay);
 
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
      *//*   {
                 MainDisplay.setText(MainDisplay.getText() + "1");
@@ -504,8 +496,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 textMainDisplay = textMainDisplay + 2;
                 MainDisplay.setText(textMainDisplay);
-                widgetHolder.HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplay();
+                widgetHolder.historyDisplayTextView.setText(textMainDisplay);
+                setHistoryDisplayTextView();
             }
         });
 
@@ -517,9 +509,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 textMainDisplay = textMainDisplay + 3;
                 MainDisplay.setText(textMainDisplay);
-                widgetHolder.HistoryDisplay.setText(textMainDisplay);
+                widgetHolder.historyDisplayTextView.setText(textMainDisplay);
 
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -528,7 +520,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
 
                 // Пробел после нажатого знака вычисления
-                *//*if (pressPlus & pressEquals) {
+                *//*if (isPressPlus & pressEquals) {
                     textMainDisplay = "";
                 }*//*
                 // Пробел после 0
@@ -539,14 +531,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textMainDisplay = textMainDisplay + 4;
 
                 MainDisplay.setText(textMainDisplay);
-                widgetHolder.HistoryDisplay.setText(textMainDisplay);
+                widgetHolder.historyDisplayTextView.setText(textMainDisplay);
 
                 // условие 1+2= → 3+4 = → 7 = → 11
-              *//*  if (!result.equals(textMainDisplay) & !pressPlus) {
-                    num1 = textMainDisplay;
+              *//*  if (!result.equals(textMainDisplay) & !isPressPlus) {
+                    number1 = textMainDisplay;
                 }*//*
 
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
 
         });
@@ -560,7 +552,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textMainDisplay = textMainDisplay + 5;
                 MainDisplay.setText(textMainDisplay);
                 HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -573,7 +565,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textMainDisplay = textMainDisplay + 6;
                 MainDisplay.setText(textMainDisplay);
                 HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -586,7 +578,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textMainDisplay = textMainDisplay + 7;
                 MainDisplay.setText(textMainDisplay);
                 HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -599,7 +591,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textMainDisplay = textMainDisplay + 8;
                 MainDisplay.setText(textMainDisplay);
                 HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -612,7 +604,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textMainDisplay = textMainDisplay + 9;
                 MainDisplay.setText(textMainDisplay);
                 HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
 
@@ -625,7 +617,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textMainDisplay = textMainDisplay + 0;
                 MainDisplay.setText(textMainDisplay);
                 HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplay();
+                setHistoryDisplayTextView();
             }
         });
         */
@@ -679,33 +671,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             textMainDisplay = textMainDisplay + 0;
         }
         WidgetHolder widgetHolder = new WidgetHolder(this);
-        TextView mainDisplayTextView = widgetHolder.getMainDisplayTextView();
-        mainDisplayTextView.setText(textMainDisplay);
+       widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
 
-        setHistoryDisplay();
+        setHistoryDisplayTextView();
 
     }
 
 
-    public void setHistoryDisplay() {
+    public void setHistoryDisplayTextView() {
         WidgetHolder widgetHolder = new WidgetHolder(this);
-        TextView historyDisplayTextView = widgetHolder.getHistoryDisplayTextView();
-        historyDisplayTextView.setText("num1=" + number1 + " num2=" + number2 + " result=" + result + " result2=" +
-                resultDouble + " num12=" + numberDouble1 + " num22=" + numberDouble2 + " textMainDisplay=" + textMainDisplay);
-
+        widgetHolder.historyDisplayTextView.setText("number1=" + number1 + " number2=" + number2 + " result=" + result + " resultDouble=" +
+                resultDouble + " numberDouble1=" + numberDouble1 + " numberDouble2=" + numberDouble2 + " textMainDisplay=" + textMainDisplay);
+        
     }
 
     public void formatFloatPoint() {
         // Форматироание плавающей точки
         if (resultDouble == (int) resultDouble) {
-                     /*   result = String.format("%.0f",result2);
+                     /*   result = String.format("%.0f",resultDouble);
                         System.out.printf("целое" + result);*/
             DecimalFormat dF = new DecimalFormat("#.#");
             result = dF.format(resultDouble);
             System.out.printf("целое" + result);
 
         } else {
-            //result = String.format("%s",result2);
+            //result = String.format("%s",resultDouble);
 
             DecimalFormat dF = new DecimalFormat("#.##########");
             result = dF.format(resultDouble);
@@ -764,8 +754,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 /*
         @Override
         public void onClick(View v){
-            double num1 = 0;
-            double num2 = 0;
+            double number1 = 0;
+            double number2 = 0;
             double result = 0;
             // определяем нажатую кнопку и выполняем соответствующую операцию
             // в oper пишем операцию, потом будем использовать в выводе
@@ -778,25 +768,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case R.id.buttonPlus:
                     oper = "+";
-                    result = num1;
+                    result = number1;
                     break;
                 case R.id.buttonMinus:
                     oper = "-";
-                    //     result = num1 - num2;
+                    //     result = number1 - number2;
                     break;
                 case R.id.button1:
                     oper = "1";
-                    //      result = num1 * num2;
+                    //      result = number1 * number2;
                     break;
                 case R.id.button2:
                     oper = "2";
-                    //      result = num1 / num2;
+                    //      result = number1 / number2;
                     break;//
                 default:
                     break;
             }
 
-          //  num1 = Double.parseDouble(MainDisplay.getText().toString());
+          //  number1 = Double.parseDouble(MainDisplay.getText().toString());
 
 
             HistoryDisplay.setText(oper);
