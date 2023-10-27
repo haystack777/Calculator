@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class WidgetHolder {
 
-    public final TextView historyDisplayTextView, mainDisplayTextView;
+    private final TextView historyDisplayTextView, mainDisplayTextView;
     public final Button button1, button2, button3, button4,
             button5, button6, button7, button8, button9, button0,
             allCleanButton, delButton, divisionButton, changeSignButton, multiplicationButton,
