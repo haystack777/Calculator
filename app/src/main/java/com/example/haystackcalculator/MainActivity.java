@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button0 = (Button) findViewById(R.id.button0);*/
 
         widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
-       // widgetHolder.historyDisplayTextView.setText(textMainDisplay);
+        // widgetHolder.historyDisplayTextView.setText(textMainDisplay);
         setHistoryDisplayTextView();
         // Для поворота экрана
         if (savedInstanceState != null) {
@@ -144,12 +144,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if (!textMainDisplay.contains(String.valueOf(s)) & !textMainDisplay.equals("0")) {
                     textMainDisplay = "-" + textMainDisplay;
-                   widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
+                    widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                 } else {
                     a = Integer.parseInt(textMainDisplay);
                     a = a * (-1);
                     textMainDisplay = String.valueOf(a);
-                   widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
+                    widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                 }
                 if (textMainDisplay.contains(String.valueOf(s)) & !result.equals("")) {
                     result = "-" + result;
@@ -199,10 +199,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(resultDouble);
                     formatFloatPoint();
                     textMainDisplay = result;
-                   widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
+                    widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                 }
                 if (number2.equals("0")) {
-                    widgetHolder.mainDisplayTextView.setText("ОШИБКА");
+                    widgetHolder.getMainDisplayTextView().setText("ОШИБКА");
                 }
                 textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
 
@@ -243,10 +243,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     resultDouble = numberDouble1 * numberDouble2;
                     formatFloatPoint();
                     textMainDisplay = result;
-                   widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
+                    widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                 }
                 // условие 1*2= → 2*3 = → 6 = → 18
-                if (isPressEquals& isPressMultiplication & !result.equals("")) {
+                if (isPressEquals & isPressMultiplication & !result.equals("")) {
                     number1 = textMainDisplay;
                 }
 
@@ -294,12 +294,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(resultDouble);
                     formatFloatPoint();
                     textMainDisplay = result;
-                   widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
+                    widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                 }
                 textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
 
                 // условие 5-2= → 3-2 = → 1 = → -1 → -3
-                if (isPressEquals& isPressMinus & !result.equals("")) {
+                if (isPressEquals & isPressMinus & !result.equals("")) {
                     number1 = textMainDisplay;
                 }
                 // условие 1+2+ → 3 = → 6 → 9 Вроде не нужно, но плюс без него не работает
@@ -345,11 +345,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(resultDouble);
                     formatFloatPoint();
                     textMainDisplay = result;
-                   widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
+                    widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                 }
 
                 // условие 1+2= → 3+4 = → 7 = → 11
-                if (isPressEquals& isPressPlus & !result.equals("")) {
+                if (isPressEquals & isPressPlus & !result.equals("")) {
                     number1 = textMainDisplay;
                 }
 
@@ -417,7 +417,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(resultDouble);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    widgetHolder.mainDisplayTextView.setText(result);
+                    widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                 }
 
                 if (isPressMultiplication & !number1.equals("") & !number2.equals("")) {
@@ -427,7 +427,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(resultDouble);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    widgetHolder.mainDisplayTextView.setText(result);
+                    widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                 }
                 if (isPressMinus & !number1.equals("") & !number2.equals("")) {
                     numberDouble1 = Double.parseDouble(number1);
@@ -436,7 +436,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(resultDouble);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    widgetHolder.mainDisplayTextView.setText(result);
+                    widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                 }
                 if (isPressPlus & !number1.equals("") & !number2.equals("")) {
                     numberDouble1 = Double.parseDouble(number1);
@@ -445,15 +445,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = String.valueOf(resultDouble);
                     formatFloatPoint();
                     textMainDisplay = result;
-                    widgetHolder.mainDisplayTextView.setText(result);
+                    widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                 }
                 // Пробел после нажатого знака вычисления
-                if (isPressEquals& !result.equals("")) {
+                if (isPressEquals & !result.equals("")) {
                     textMainDisplay = "";
                 }
 
 
-                isPressEquals= true;
+                isPressEquals = true;
                 setHistoryDisplayTextView();
             }
         });
@@ -463,11 +463,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 textMainDisplay = textMainDisplay + ".";
-               widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
-                widgetHolder.historyDisplayTextView.setText(textMainDisplay);
+                widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
+                widgetHolder.getHistoryDisplayTextView().setText(textMainDisplay);
                 setHistoryDisplayTextView();
             }
         });
+
 
 /*
         widgetHolder.button1.setOnClickListener(new View.OnClickListener() {
@@ -671,7 +672,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             textMainDisplay = textMainDisplay + 0;
         }
         WidgetHolder widgetHolder = new WidgetHolder(this);
-       widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
+        widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
 
         setHistoryDisplayTextView();
 
@@ -680,9 +681,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void setHistoryDisplayTextView() {
         WidgetHolder widgetHolder = new WidgetHolder(this);
-        widgetHolder.historyDisplayTextView.setText("number1=" + number1 + " number2=" + number2 + " result=" + result + " resultDouble=" +
+        widgetHolder.getHistoryDisplayTextView().setText("number1=" + number1 + " number2=" + number2 + " result=" + result + " resultDouble=" +
                 resultDouble + " numberDouble1=" + numberDouble1 + " numberDouble2=" + numberDouble2 + " textMainDisplay=" + textMainDisplay);
-        
+
     }
 
     public void formatFloatPoint() {
