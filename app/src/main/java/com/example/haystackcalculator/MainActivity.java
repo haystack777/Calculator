@@ -3,10 +3,8 @@ package com.example.haystackcalculator;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import java.text.DecimalFormat;
 
@@ -342,7 +340,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     textMainDisplay = "";
                 }
 
-                // textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
+              //   textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
 
                 isPressPlus = true;
                 setHistoryDisplayTextView();
