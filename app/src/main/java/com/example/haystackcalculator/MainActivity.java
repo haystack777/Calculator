@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main4);
         WidgetHolder widgetHolder = new WidgetHolder(this);
 
-      /*  // находим элементы
+        /*  // находим элементы
         widgetHolder.historyDisplayTextViewTextView = (TextView) findViewById(R.id.history);
         MainDisplay = (TextView) findViewById(R.id.result);
 
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
         setHistoryDisplayTextView();
-        
+
 
         // Для поворота экрана
         if (savedInstanceState != null) {
