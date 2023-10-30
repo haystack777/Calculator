@@ -24,36 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
         WidgetHolder widgetHolder = new WidgetHolder(this);
-
-        /*  // находим элементы
-        widgetHolder.historyDisplayTextViewTextView = (TextView) findViewById(R.id.history);
-        MainDisplay = (TextView) findViewById(R.id.result);
-
-        getAllCleanButton() = (Button) findViewById(R.id.buttonAC);
-        getDelButton() = (Button) findViewById(R.id.buttonDel);
-        getChangeSignButton() = (Button) findViewById(R.id.buttonSign);
-
-        widgetHolder.getDivisionButton() = (Button) findViewById(R.id.buttonDivision);
-        widgetHolder.getMultiplicationButton() = (Button) findViewById(R.id.buttonMultiplication);
-        buttonMinus = (Button) findViewById(R.id.buttonMinus);
-        widgetHolder.getPlusButton() = (Button) findViewById(R.id.buttonPlus);
-        widgetHolder.getEqualsButton() = (Button) findViewById(R.id.buttonEquals);
-        widgetHolder.widgetHolder.getDotButton()  = (Button) findViewById(R.id.buttonDot);
-
-        button1 = (Button) findViewById(R.id.button1);
-        button2 = (Button) findViewById(R.id.button2);
-        button3 = (Button) findViewById(R.id.button3);
-        button4 = (Button) findViewById(R.id.button4);
-        button5 = (Button) findViewById(R.id.button5);
-        button6 = (Button) findViewById(R.id.button6);
-        button7 = (Button) findViewById(R.id.button7);
-        button8 = (Button) findViewById(R.id.button8);
-        button9 = (Button) findViewById(R.id.button9);
-        button0 = (Button) findViewById(R.id.button0);*/
-
         widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
         setHistoryDisplayTextView();
-
 
         // Для поворота экрана
         if (savedInstanceState != null) {
@@ -84,37 +56,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setHistoryDisplayTextView();
             }
         });
-       /* public void wasLastPress() {
-            switch (v.getId()) {
-                case R.id.buttonAC:
-                    oper = "0";
-                    break;
-                case R.id.buttonDel:
-                    oper = "0";
-                    break;
-                case R.id.buttonPlus:
-                    oper = "+";
-                    result = number1;
-                    break;
-                case R.id.buttonMinus:
-                    oper = "-";
-                    //     result = number1 - number2;
-                    break;
-
-                case R.id.button1:
-                    oper = "1";
-                    //      result = number1 * number2;
-                    break;
-                case R.id.button2:
-                    oper = "2";
-                    //      result = number1 / number2;
-                    break;//
-                default:
-                    break;
-            }
-        }*/
-
-
         widgetHolder.getDelButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -434,7 +375,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-
         widgetHolder.getDotButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -455,8 +395,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setHistoryDisplayTextView();
             }
         });
-
-
 
 /*
         widgetHolder.button1.setOnClickListener(new View.OnClickListener() {
@@ -663,11 +601,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
     private void setHistoryDisplayTextView() {
         WidgetHolder widgetHolder = new WidgetHolder(this);
-        widgetHolder.getHistoryDisplayTextView().setText("number1=" + number1 + " number2=" + number2 + " result=" + result + " resultDouble=" +
-                resultDouble + " numberDouble1=" + numberDouble1 + " numberDouble2=" + numberDouble2 + " textMainDisplay=" + textMainDisplay);
+        widgetHolder.getHistoryDisplayTextView().setText("number1=" + number1 + " number2=" +
+                number2 + " result=" + result + " resultDouble=" +
+                resultDouble + " numberDouble1=" + numberDouble1 +
+                " numberDouble2=" + numberDouble2 + " textMainDisplay=" + textMainDisplay);
 
     }
 
@@ -708,164 +647,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
         }
     }
-
-
-
-
-
-    /*public void changeColor(View v) {
-        switch (v.getId()) {
-            case R.id.button1:
-                button1.setBackgroundColor(Color.parseColor("#ff0000"));
-                button2.setBackgroundColor(Color.parseColor("#0000ff"));
-                button3.setBackgroundColor(Color.parseColor("#0000ff"));
-                break;
-            case R.id.button2:
-                button1.setBackgroundColor(Color.parseColor("#0000ff"));
-                button2.setBackgroundColor(Color.parseColor("#ff0000"));
-                button3.setBackgroundColor(Color.parseColor("#0000ff"));
-                break;
-            case R.id.button3:
-                button1.setBackgroundColor(Color.parseColor("#0000ff"));
-                button2.setBackgroundColor(Color.parseColor("#0000ff"));
-                button3.setBackgroundColor(Color.parseColor("#ff0000"));
-                break;
-        }
-    }*/
-
-
-
-
-/*
-        @Override
-        public void onClick(View v){
-            double number1 = 0;
-            double number2 = 0;
-            double result = 0;
-            // определяем нажатую кнопку и выполняем соответствующую операцию
-            // в oper пишем операцию, потом будем использовать в выводе
-            switch (v.getId()) {
-               *//* case R.id.buttonAllClean:
-                    oper = "0";
-                    break;*//*
-                case R.id.buttonDel:
-                    oper = "0";
-                    break;
-                case R.id.buttonPlus:
-                    oper = "+";
-                    result = number1;
-                    break;
-                case R.id.buttonMinus:
-                    oper = "-";
-                    //     result = number1 - number2;
-                    break;
-                case R.id.button1:
-                    oper = "1";
-                    //      result = number1 * number2;
-                    break;
-                case R.id.button2:
-                    oper = "2";
-                    //      result = number1 / number2;
-                    break;//
-                default:
-                    break;
-            }
-
-          //  number1 = Double.parseDouble(MainDisplay.getText().toString());
-
-
-            HistoryDisplay.setText(oper);
-            MainDisplay.setText(oper);
-        }*/
-
-
-    /* *//* // сохранение состояния
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            outState.putString("OPERATION", lastOperation);
-            if(operand!=null)
-                outState.putDouble("OPERAND", operand);
-            super.onSaveInstanceState(outState);
-        }
-        // получение ранее сохраненного состояния
-        @Override
-        protected void onRestoreInstanceState(Bundle savedInstanceState) {
-            super.onRestoreInstanceState(savedInstanceState);
-            lastOperation = savedInstanceState.getString("OPERATION");
-            operand= savedInstanceState.getDouble("OPERAND");
-            resultField.setText(operand.toString());
-            operationField.setText(lastOperation);
-        }*//*
-        // обработка нажатия на числовую кнопку
-        public void onNumberClick(View view){
-
-            Button button = (Button)view;
-            MainDisplay.append(button.getText());
-
-            if(lastOperation.equals("=") && operand!=null){
-                operand = null;
-            }
-        }
-        // обработка нажатия на кнопку операции
-        public void onOperationClick(View view){
-
-            Button button = (Button)view;
-            String op = button.getText().toString();
-            String textMainDisplay = numberField.getText().toString();
-            // если введенно что-нибудь
-            if(textMainDisplay.length()>0){
-                textMainDisplay = textMainDisplay.replace(',', '.');
-                try{
-                    performOperation(Double.valueOf(textMainDisplay), op);
-                }catch (NumberFormatException ex){
-                    numberField.setText("");
-                }
-            }
-            lastOperation = op;
-            operationField.setText(lastOperation);
-        }
-
-        private void performOperation(Double textMainDisplay, String operation){
-
-            // если операнд ранее не был установлен (при вводе самой первой операции)
-            if(operand ==null){
-                operand = textMainDisplay;
-            }
-            else{
-                if(lastOperation.equals("=")){
-                    lastOperation = operation;
-                }
-                switch(lastOperation){
-                    case "=":
-                        operand =textMainDisplay;
-                        break;
-                    case "/":
-                        if(textMainDisplay==0){
-                            operand =0.0;
-                        }
-                        else{
-                            operand /=textMainDisplay;
-                        }
-                        break;
-                    case "*":
-                        operand *=textMainDisplay;
-                        break;
-                    case "+":
-                        operand +=textMainDisplay;
-                        break;
-                    case "-":
-                        operand -=textMainDisplay;
-                        break;
-                }
-            }
-            resultField.setText(operand.toString().replace('.', ','));
-            numberField.setText("");
-        }
-    }
-
-
-    }*/
-
 
 }
 
