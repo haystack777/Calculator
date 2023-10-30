@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-
 import java.text.DecimalFormat;
 
 
@@ -21,25 +20,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     @Override
-    protected final void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
         WidgetHolder widgetHolder = new WidgetHolder(this);
-        
+
       /*  // находим элементы
         widgetHolder.historyDisplayTextViewTextView = (TextView) findViewById(R.id.history);
         MainDisplay = (TextView) findViewById(R.id.result);
 
-        allCleanButton = (Button) findViewById(R.id.buttonAC);
-        delButton = (Button) findViewById(R.id.buttonDel);
-        changeSignButton = (Button) findViewById(R.id.buttonSign);
+        getAllCleanButton() = (Button) findViewById(R.id.buttonAC);
+        getDelButton() = (Button) findViewById(R.id.buttonDel);
+        getChangeSignButton() = (Button) findViewById(R.id.buttonSign);
 
-        widgetHolder.divisionButton = (Button) findViewById(R.id.buttonDivision);
-        widgetHolder.multiplicationButton = (Button) findViewById(R.id.buttonMultiplication);
+        widgetHolder.getDivisionButton() = (Button) findViewById(R.id.buttonDivision);
+        widgetHolder.getMultiplicationButton() = (Button) findViewById(R.id.buttonMultiplication);
         buttonMinus = (Button) findViewById(R.id.buttonMinus);
-        widgetHolder.plusButton = (Button) findViewById(R.id.buttonPlus);
-        widgetHolder.equalsButton = (Button) findViewById(R.id.buttonEquals);
-        widgetHolder.widgetHolder.dotButton  = (Button) findViewById(R.id.buttonDot);
+        widgetHolder.getPlusButton() = (Button) findViewById(R.id.buttonPlus);
+        widgetHolder.getEqualsButton() = (Button) findViewById(R.id.buttonEquals);
+        widgetHolder.widgetHolder.getDotButton()  = (Button) findViewById(R.id.buttonDot);
 
         button1 = (Button) findViewById(R.id.button1);
         button2 = (Button) findViewById(R.id.button2);
@@ -54,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
         setHistoryDisplayTextView();
+        
 
         // Для поворота экрана
         if (savedInstanceState != null) {
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
         }
 
-        widgetHolder.allCleanButton.setOnClickListener(new View.OnClickListener() {
+        widgetHolder.getAllCleanButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 number1 = "";
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }*/
 
 
-        widgetHolder.delButton.setOnClickListener(new View.OnClickListener() {
+        widgetHolder.getDelButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!textMainDisplay.equals("0") & textMainDisplay.length() > 0) {
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        widgetHolder.changeSignButton.setOnClickListener(new View.OnClickListener() {
+        widgetHolder.getChangeSignButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 char s = '-';
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        widgetHolder.divisionButton.setOnClickListener(new View.OnClickListener() {
+        widgetHolder.getDivisionButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // условие - запись в первое число если оно пусто
@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        widgetHolder.multiplicationButton.setOnClickListener(new View.OnClickListener() {
+        widgetHolder.getMultiplicationButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // условие - запись в первое число если оно пусто
@@ -246,7 +246,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        widgetHolder.minusButton.setOnClickListener(new View.OnClickListener() {
+        widgetHolder.getMinusButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // условие - запись в первое число если оно пусто
@@ -295,7 +295,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        widgetHolder.plusButton.setOnClickListener(new View.OnClickListener() {
+        widgetHolder.getPlusButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // условие - запись в первое слагаемое если оно пусто
@@ -348,7 +348,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         });
 
-        widgetHolder.equalsButton.setOnClickListener(new View.OnClickListener() {
+        widgetHolder.getEqualsButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -435,7 +435,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
-        widgetHolder.dotButton.setOnClickListener(new View.OnClickListener() {
+        widgetHolder.getDotButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 textMainDisplay = textMainDisplay + ".";
@@ -444,7 +444,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        widgetHolder.button1.setOnClickListener(new View.OnClickListener() {
+        widgetHolder.getButton1().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (textMainDisplay.equals("0")) {
@@ -610,15 +610,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         */
         //Обработка одним ClickListener
   //    widgetHolder.button1.setOnClickListener(this);
-        widgetHolder.button2.setOnClickListener(this);
-        widgetHolder.button3.setOnClickListener(this);
-        widgetHolder.button4.setOnClickListener(this);
-        widgetHolder.button5.setOnClickListener(this);
-        widgetHolder.button6.setOnClickListener(this);
-        widgetHolder.button7.setOnClickListener(this);
-        widgetHolder.button8.setOnClickListener(this);
-        widgetHolder.button9.setOnClickListener(this);
-        widgetHolder.button0.setOnClickListener(this);
+        widgetHolder.getButton2().setOnClickListener(this);
+        widgetHolder.getButton3().setOnClickListener(this);
+        widgetHolder.getButton4().setOnClickListener(this);
+        widgetHolder.getButton5().setOnClickListener(this);
+        widgetHolder.getButton6().setOnClickListener(this);
+        widgetHolder.getButton7().setOnClickListener(this);
+        widgetHolder.getButton8().setOnClickListener(this);
+        widgetHolder.getButton9().setOnClickListener(this);
+        widgetHolder.getButton0().setOnClickListener(this);
 
     }
 

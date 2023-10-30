@@ -6,10 +6,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class WidgetHolder {
+class WidgetHolder {
 
     private final TextView historyDisplayTextView, mainDisplayTextView;
-    public final Button button1, button2, button3, button4,
+    private final Button button1, button2, button3, button4,
             button5, button6, button7, button8, button9, button0,
             allCleanButton, delButton, divisionButton, changeSignButton, multiplicationButton,
             minusButton, plusButton, equalsButton, dotButton;
@@ -48,4 +48,81 @@ public class WidgetHolder {
         return mainDisplayTextView;
     }
 
+    public Button getButton1() {
+        return button1;
+    }
+
+    public Button getButton2() {
+        return button2;
+    }
+
+    public Button getButton3() {
+        return button3;
+    }
+
+    public Button getButton4() {
+        return button4;
+    }
+
+    public Button getButton5() {
+        return button5;
+    }
+
+    public Button getButton6() {
+        return button6;
+    }
+
+    public Button getButton7() {
+        return button7;
+    }
+
+    public Button getButton8() {
+        return button8;
+    }
+
+    public Button getButton9() {
+        return button9;
+    }
+
+    public Button getButton0() {
+        return button0;
+    }
+
+    public Button getAllCleanButton() {
+        return allCleanButton;
+    }
+
+    public Button getDelButton() {
+        return delButton;
+    }
+
+    public Button getChangeSignButton() {
+        return changeSignButton;
+    }
+
+    public Button getDivisionButton() {
+        return divisionButton;
+    }
+
+    public Button getMultiplicationButton() {
+        return multiplicationButton;
+    }
+
+    public Button getMinusButton() {
+        return minusButton;
+    }
+
+    public Button getPlusButton() {
+        return plusButton;
+    }
+
+    public Button getEqualsButton() {
+        return equalsButton;
+    }
+
+    public Button getDotButton() {
+        return dotButton;
+    }
+
 }
+
