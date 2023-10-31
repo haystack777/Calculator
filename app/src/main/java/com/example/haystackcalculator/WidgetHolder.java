@@ -2,9 +2,7 @@ package com.example.haystackcalculator;
 
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 
 class WidgetHolder {
 
@@ -104,9 +102,7 @@ class WidgetHolder {
         return divisionButton;
     }
 
-    public Button getMultiplicationButton() {
-        return multiplicationButton;
-    }
+    public Button getMultiplicationButton() { return multiplicationButton;}
 
     public Button getMinusButton() {
         return minusButton;
@@ -123,6 +119,4 @@ class WidgetHolder {
     public Button getDotButton() {
         return dotButton;
     }
-
 }
-

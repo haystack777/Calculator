@@ -5,19 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+
 import java.text.DecimalFormat;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    public String number1 = "", number2 = "", result = "";
-    double numberDouble1, numberDouble2, resultDouble, was;
-    boolean isPressDivision, isPressMultiplication, isPressMinus, isPressPlus, isPressEquals;
+    private String number1 = "", number2 = "", result = "";
+    private double numberDouble1, numberDouble2, resultDouble, was;
+    private boolean isPressDivision, isPressMultiplication, isPressMinus, isPressPlus, isPressEquals;
     private String textMainDisplay = "0";
-
     private static final String KEY_COUNT1 = "COUNT1";// для поворота экрана
     private static final String KEY_COUNT2 = "COUNT2";
     private static final String KEY_COUNT3 = "COUNT3";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -281,7 +280,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     textMainDisplay = "";
                 }
 
-              //   textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
+                //   textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
 
                 isPressPlus = true;
                 setHistoryDisplayTextView();
@@ -396,158 +395,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-/*
-        widgetHolder.button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (textMainDisplay.equals("0")) {
-                    textMainDisplay = "";
-                }
-                textMainDisplay = textMainDisplay + 1;
-               widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
-               setHistoryDisplayTextView();
-            }
-       {
-                MainDisplay.setText(MainDisplay.getText() + "1");
-            }*//*
-
-        });
-
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (textMainDisplay.equals("0")) {
-                    textMainDisplay = "";
-                }
-                textMainDisplay = textMainDisplay + 2;
-                MainDisplay.setText(textMainDisplay);
-                widgetHolder.historyDisplayTextView.setText(textMainDisplay);
-                setHistoryDisplayTextView();
-            }
-        });
-
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (textMainDisplay.equals("0")) {
-                    textMainDisplay = "";
-                }
-                textMainDisplay = textMainDisplay + 3;
-                MainDisplay.setText(textMainDisplay);
-                widgetHolder.historyDisplayTextView.setText(textMainDisplay);
-
-                setHistoryDisplayTextView();
-            }
-        });
-
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // Пробел после нажатого знака вычисления
-                *//*if (isPressPlus & pressEquals) {
-                    textMainDisplay = "";
-                }*//*
-                // Пробел после 0
-                if (textMainDisplay.equals("0")) {
-                    textMainDisplay = "";
-                }
-
-                textMainDisplay = textMainDisplay + 4;
-
-                MainDisplay.setText(textMainDisplay);
-                widgetHolder.historyDisplayTextView.setText(textMainDisplay);
-
-                // условие 1+2= → 3+4 = → 7 = → 11
-              *//*  if (!result.equals(textMainDisplay) & !isPressPlus) {
-                    number1 = textMainDisplay;
-                }*//*
-
-                setHistoryDisplayTextView();
-            }
-
-        });
-
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (textMainDisplay.equals("0")) {
-                    textMainDisplay = "";
-                }
-                textMainDisplay = textMainDisplay + 5;
-                MainDisplay.setText(textMainDisplay);
-                HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplayTextView();
-            }
-        });
-
-        button6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (textMainDisplay.equals("0")) {
-                    textMainDisplay = "";
-                }
-                textMainDisplay = textMainDisplay + 6;
-                MainDisplay.setText(textMainDisplay);
-                HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplayTextView();
-            }
-        });
-
-        button7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (textMainDisplay.equals("0")) {
-                    textMainDisplay = "";
-                }
-                textMainDisplay = textMainDisplay + 7;
-                MainDisplay.setText(textMainDisplay);
-                HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplayTextView();
-            }
-        });
-
-        button8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (textMainDisplay.equals("0")) {
-                    textMainDisplay = "";
-                }
-                textMainDisplay = textMainDisplay + 8;
-                MainDisplay.setText(textMainDisplay);
-                HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplayTextView();
-            }
-        });
-
-        button9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (textMainDisplay.equals("0")) {
-                    textMainDisplay = "";
-                }
-                textMainDisplay = textMainDisplay + 9;
-                MainDisplay.setText(textMainDisplay);
-                HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplayTextView();
-            }
-        });
-
-        button0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (textMainDisplay.equals("0")) {
-                    textMainDisplay = "";
-                }
-                textMainDisplay = textMainDisplay + 0;
-                MainDisplay.setText(textMainDisplay);
-                HistoryDisplay.setText(textMainDisplay);
-                setHistoryDisplayTextView();
-            }
-        });
-        */
         //Обработка одним ClickListener
-  //    widgetHolder.button1.setOnClickListener(this);
+        // widgetHolder.button1.setOnClickListener(this);
         widgetHolder.getButton2().setOnClickListener(this);
         widgetHolder.getButton3().setOnClickListener(this);
         widgetHolder.getButton4().setOnClickListener(this);
@@ -585,7 +434,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (id == R.id.button5) {
             textMainDisplay = textMainDisplay + 5;
         } else if (id == R.id.button6) {
-            textMainDisplay = textMainDisplay + 6;
+            textMainDisplay += 6;
         } else if (id == R.id.button7) {
             textMainDisplay = textMainDisplay + 7;
         } else if (id == R.id.button8) {
@@ -607,7 +456,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 number2 + " result=" + result + " resultDouble=" +
                 resultDouble + " numberDouble1=" + numberDouble1 +
                 " numberDouble2=" + numberDouble2 + " textMainDisplay=" + textMainDisplay);
-
     }
 
     private void formatFloatPoint() {
@@ -627,9 +475,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
     LastOperation lastPressOperation = LastOperation.PRESSPLUS;
-
     public void lastPressOperation(LastOperation lastOperation) {
         switch (lastOperation) {
             case PRESSPLUS:
