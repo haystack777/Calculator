@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -383,7 +386,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        widgetHolder.getButton1().setOnClickListener(new View.OnClickListener() {
+      /*  widgetHolder.getButton1().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (textMainDisplay.equals("0")) {
@@ -393,10 +396,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                 setHistoryDisplayTextView();
             }
-        });
+        });*/
 
         //Обработка одним ClickListener
-        // widgetHolder.button1.setOnClickListener(this);
+       /* widgetHolder.getButton1().setOnClickListener(this);
         widgetHolder.getButton2().setOnClickListener(this);
         widgetHolder.getButton3().setOnClickListener(this);
         widgetHolder.getButton4().setOnClickListener(this);
@@ -405,7 +408,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         widgetHolder.getButton7().setOnClickListener(this);
         widgetHolder.getButton8().setOnClickListener(this);
         widgetHolder.getButton9().setOnClickListener(this);
-        widgetHolder.getButton0().setOnClickListener(this);
+        widgetHolder.getButton0().setOnClickListener(this);*/
+
+        ArrayList<Button> buttons = new ArrayList<>();
+        Button[] buttonArray = {
+                widgetHolder.getButton1(),
+                widgetHolder.getButton2(),
+                widgetHolder.getButton3(),
+                widgetHolder.getButton4(),
+                widgetHolder.getButton5(),
+                widgetHolder.getButton6(),
+                widgetHolder.getButton7(),
+                widgetHolder.getButton8(),
+                widgetHolder.getButton9(),
+                widgetHolder.getButton0()
+        };
+        Collections.addAll(buttons, buttonArray);
+
+        for (Button button : buttons) {
+            button.setOnClickListener(this);
+        }
+
+
+/*
+        ArrayList<Button> buttons = new ArrayList<>();
+        buttons.add(widgetHolder.getButton1());
+        buttons.add(widgetHolder.getButton2());
+        buttons.add(widgetHolder.getButton3());
+        buttons.add(widgetHolder.getButton4());
+        buttons.add(widgetHolder.getButton5());
+        buttons.add(widgetHolder.getButton6());
+        buttons.add(widgetHolder.getButton7());
+        buttons.add(widgetHolder.getButton8());
+        buttons.add(widgetHolder.getButton9());
+        buttons.add(widgetHolder.getButton0());*/
+        // Получение элемента по индексу
+
 
     }
 
@@ -423,9 +461,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             textMainDisplay = "";
         }
         int id = v.getId();
-        if /*(id == R.id.button1) {
+
+        // Создание массива кнопок и соответствующих числовых значений
+        int[] buttonIds = {R.id.button1, R.id.button2, R.id.button3, R.id.button4, R.id.button5,
+                R.id.button6, R.id.button7, R.id.button8, R.id.button9, R.id.button0};
+        int[] buttonValues = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+
+        // Поиск соответствующего числового значения для данного id кнопки
+        for (int i = 0; i < buttonIds.length; i++) {
+            if (id == buttonIds[i]) {
+                textMainDisplay += buttonValues[i];
+                break;
+            }
+        }
+
+
+        /*if *//*(id == R.id.button1) {
             textMainDisplay = textMainDisplay + 1;
-        } else if*/ (id == R.id.button2) {
+        } else if*//* (id == R.id.button2) {
             textMainDisplay = textMainDisplay + 2;
         } else if (id == R.id.button3) {
             textMainDisplay = textMainDisplay + 3;
@@ -434,7 +487,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (id == R.id.button5) {
             textMainDisplay = textMainDisplay + 5;
         } else if (id == R.id.button6) {
-            textMainDisplay += 6;
+            textMainDisplay = textMainDisplay + 6;
         } else if (id == R.id.button7) {
             textMainDisplay = textMainDisplay + 7;
         } else if (id == R.id.button8) {
@@ -443,7 +496,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             textMainDisplay = textMainDisplay + 9;
         } else if (id == R.id.button0) {
             textMainDisplay = textMainDisplay + 0;
-        }
+        }*/
+
+
+
+        /*String text = v.R.Id ? 1 : 2;
+        textMainDisplay += text;
+
+        switch (v.getId())
+        {
+            case (id == R.id.button8):
+                textMainDisplay += text;;
+                break;
+            case ():
+                hashCode();
+                break;
+        }*/
+
+
         WidgetHolder widgetHolder = new WidgetHolder(this);
         widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
         setHistoryDisplayTextView();
@@ -476,6 +546,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     LastOperation lastPressOperation = LastOperation.PRESSPLUS;
+
     public void lastPressOperation(LastOperation lastOperation) {
         switch (lastOperation) {
             case PRESSPLUS:
