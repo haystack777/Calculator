@@ -386,30 +386,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-      /*  widgetHolder.getButton1().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (textMainDisplay.equals("0")) {
-                    textMainDisplay = "";
-                }
-                textMainDisplay = textMainDisplay + "1";
-                widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
-                setHistoryDisplayTextView();
-            }
-        });*/
-
-        //Обработка одним ClickListener
-       /* widgetHolder.getButton1().setOnClickListener(this);
-        widgetHolder.getButton2().setOnClickListener(this);
-        widgetHolder.getButton3().setOnClickListener(this);
-        widgetHolder.getButton4().setOnClickListener(this);
-        widgetHolder.getButton5().setOnClickListener(this);
-        widgetHolder.getButton6().setOnClickListener(this);
-        widgetHolder.getButton7().setOnClickListener(this);
-        widgetHolder.getButton8().setOnClickListener(this);
-        widgetHolder.getButton9().setOnClickListener(this);
-        widgetHolder.getButton0().setOnClickListener(this);*/
-
         ArrayList<Button> buttons = new ArrayList<>();
         Button[] buttonArray = {
                 widgetHolder.getButton1(),
@@ -428,22 +404,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (Button button : buttons) {
             button.setOnClickListener(this);
         }
-
-
-/*
-        ArrayList<Button> buttons = new ArrayList<>();
-        buttons.add(widgetHolder.getButton1());
-        buttons.add(widgetHolder.getButton2());
-        buttons.add(widgetHolder.getButton3());
-        buttons.add(widgetHolder.getButton4());
-        buttons.add(widgetHolder.getButton5());
-        buttons.add(widgetHolder.getButton6());
-        buttons.add(widgetHolder.getButton7());
-        buttons.add(widgetHolder.getButton8());
-        buttons.add(widgetHolder.getButton9());
-        buttons.add(widgetHolder.getButton0());*/
-        // Получение элемента по индексу
-
 
     }
 
@@ -474,45 +434,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             }
         }
-
-
-        /*if *//*(id == R.id.button1) {
-            textMainDisplay = textMainDisplay + 1;
-        } else if*//* (id == R.id.button2) {
-            textMainDisplay = textMainDisplay + 2;
-        } else if (id == R.id.button3) {
-            textMainDisplay = textMainDisplay + 3;
-        } else if (id == R.id.button4) {
-            textMainDisplay = textMainDisplay + 4;
-        } else if (id == R.id.button5) {
-            textMainDisplay = textMainDisplay + 5;
-        } else if (id == R.id.button6) {
-            textMainDisplay = textMainDisplay + 6;
-        } else if (id == R.id.button7) {
-            textMainDisplay = textMainDisplay + 7;
-        } else if (id == R.id.button8) {
-            textMainDisplay = textMainDisplay + 8;
-        } else if (id == R.id.button9) {
-            textMainDisplay = textMainDisplay + 9;
-        } else if (id == R.id.button0) {
-            textMainDisplay = textMainDisplay + 0;
-        }*/
-
-
-
-        /*String text = v.R.Id ? 1 : 2;
-        textMainDisplay += text;
-
-        switch (v.getId())
-        {
-            case (id == R.id.button8):
-                textMainDisplay += text;;
-                break;
-            case ():
-                hashCode();
-                break;
-        }*/
-
 
         WidgetHolder widgetHolder = new WidgetHolder(this);
         widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
