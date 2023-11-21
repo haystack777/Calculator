@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
     private String number1 = "", number2 = "", result = "";
     private double numberDouble1, numberDouble2, resultDouble, was;
     private boolean isPressDivision, isPressMultiplication, isPressMinus, isPressPlus, isPressEquals;
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
+
         WidgetHolder widgetHolder = new WidgetHolder(this);
         widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
         setHistoryDisplayTextView();
@@ -402,7 +403,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Collections.addAll(buttons, buttonArray);
 
         for (Button button : buttons) {
-            button.setOnClickListener(this);
+            button.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (textMainDisplay.equals("0")) {
+                                textMainDisplay = "";
+                            }
+                            int id = v.getId();
+
+                            // Создание массива кнопок и соответствующих числовых значений
+                            int[] buttonIds = {R.id.button1, R.id.button2, R.id.button3,
+                                    R.id.button4, R.id.button5,
+                                    R.id.button6, R.id.button7, R.id.button8,
+                                    R.id.button9, R.id.button0};
+                            int[] buttonValues = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+
+                            // Поиск соответствующего числового значения для данного id кнопки
+                            for (int i = 0; i < buttonIds.length; i++) {
+                                if (id == buttonIds[i]) {
+                                    textMainDisplay += buttonValues[i];
+                                    break;
+                                }
+                            }
+                            widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
+                            setHistoryDisplayTextView();
+                        }
+                    }
+            );
         }
 
     }
@@ -416,30 +444,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         savedInstanceState.putBoolean(KEY_COUNT3, isPressPlus);
     }
 
-    public final void onClick(View v) {
-        if (textMainDisplay.equals("0")) {
-            textMainDisplay = "";
-        }
-        int id = v.getId();
-
-        // Создание массива кнопок и соответствующих числовых значений
-        int[] buttonIds = {R.id.button1, R.id.button2, R.id.button3, R.id.button4, R.id.button5,
-                R.id.button6, R.id.button7, R.id.button8, R.id.button9, R.id.button0};
-        int[] buttonValues = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
-
-        // Поиск соответствующего числового значения для данного id кнопки
-        for (int i = 0; i < buttonIds.length; i++) {
-            if (id == buttonIds[i]) {
-                textMainDisplay += buttonValues[i];
-                break;
-            }
-        }
-
-        WidgetHolder widgetHolder = new WidgetHolder(this);
-        widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
-        setHistoryDisplayTextView();
-
-    }
 
     private void setHistoryDisplayTextView() {
         WidgetHolder widgetHolder = new WidgetHolder(this);
