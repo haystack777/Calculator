@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -378,31 +378,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        widgetHolder.getDotButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textMainDisplay = textMainDisplay + ".";
-                widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
-                setHistoryDisplayTextView();
-            }
+        widgetHolder.getDotButton().setOnClickListener(v -> {
+            textMainDisplay = textMainDisplay + ".";
+            widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
+            setHistoryDisplayTextView();
         });
 
-        ArrayList<Button> buttons = new ArrayList<>();
-        Button[] buttonArray = {
-                widgetHolder.getButton1(),
-                widgetHolder.getButton2(),
-                widgetHolder.getButton3(),
-                widgetHolder.getButton4(),
-                widgetHolder.getButton5(),
-                widgetHolder.getButton6(),
-                widgetHolder.getButton7(),
-                widgetHolder.getButton8(),
-                widgetHolder.getButton9(),
-                widgetHolder.getButton0()
-        };
-        Collections.addAll(buttons, buttonArray);
 
-        for (Button button : buttons) {
+        for (Button button : widgetHolder.getButtons()) {
             button.setOnClickListener(
                     new View.OnClickListener() {
                         @Override
@@ -410,29 +393,29 @@ public class MainActivity extends AppCompatActivity {
                             if (textMainDisplay.equals("0")) {
                                 textMainDisplay = "";
                             }
-                            int id = v.getId();
-
-                            // Создание массива кнопок и соответствующих числовых значений
-                            int[] buttonIds = {R.id.button1, R.id.button2, R.id.button3,
-                                    R.id.button4, R.id.button5,
-                                    R.id.button6, R.id.button7, R.id.button8,
-                                    R.id.button9, R.id.button0};
-                            int[] buttonValues = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
-
-                            // Поиск соответствующего числового значения для данного id кнопки
-                            for (int i = 0; i < buttonIds.length; i++) {
-                                if (id == buttonIds[i]) {
-                                    textMainDisplay += buttonValues[i];
-                                    break;
+                            // Создание мапы кнопок и соответствующих числовых значений
+                            HashMap<Integer, String> buttonIdsMap = new HashMap<Integer, String>() {
+                                {
+                                    put(R.id.button0, "0");
+                                    put(R.id.button1, "1");
+                                    put(R.id.button2, "2");
+                                    put(R.id.button3, "3");
+                                    put(R.id.button4, "4");
+                                    put(R.id.button5, "5");
+                                    put(R.id.button6, "6");
+                                    put(R.id.button7, "7");
+                                    put(R.id.button8, "8");
+                                    put(R.id.button9, "9");
                                 }
-                            }
+                            };
+
+                            textMainDisplay += buttonIdsMap.get(v.getId());
                             widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
                             setHistoryDisplayTextView();
                         }
                     }
             );
         }
-
     }
 
     // Для поворота экрана
@@ -443,7 +426,6 @@ public class MainActivity extends AppCompatActivity {
         savedInstanceState.putString(KEY_COUNT2, result);
         savedInstanceState.putBoolean(KEY_COUNT3, isPressPlus);
     }
-
 
     private void setHistoryDisplayTextView() {
         WidgetHolder widgetHolder = new WidgetHolder(this);
@@ -456,15 +438,11 @@ public class MainActivity extends AppCompatActivity {
     private void formatFloatPoint() {
         // Форматироание плавающей точки
         if (resultDouble == (int) resultDouble) {
-                     /*   result = String.format("%.0f",resultDouble);
-                        System.out.printf("целое" + result);*/
             DecimalFormat dF = new DecimalFormat("#.#");
             result = dF.format(resultDouble);
             System.out.printf("целое" + result);
 
         } else {
-            //result = String.format("%s",resultDouble);
-
             DecimalFormat dF = new DecimalFormat("#.##########");
             result = dF.format(resultDouble);
         }
