@@ -17,8 +17,6 @@ class WidgetHolder {
             minusButton, plusButton, equalsButton, dotButton;
    public final ArrayList<Button> buttons = new ArrayList<>();
 
-
-
     public WidgetHolder(AppCompatActivity context) {
 
         // находим элементы

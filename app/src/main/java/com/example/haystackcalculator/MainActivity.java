@@ -10,31 +10,26 @@ import android.widget.Button;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 
-
-
 public class MainActivity extends AppCompatActivity {
     private String number1 = "", number2 = "", result = "";
     private double numberDouble1, numberDouble2, resultDouble, was;
     private boolean isPressDivision, isPressMultiplication, isPressMinus, isPressPlus, isPressEquals;
     private String textMainDisplay = "0";
-    private static final String KEY_COUNT1 = "COUNT1";// для поворота экрана
-    private static final String KEY_COUNT2 = "COUNT2";
-    private static final String KEY_COUNT3 = "COUNT3";
+    private WidgetHolder widgetHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
-
-        WidgetHolder widgetHolder = new WidgetHolder(this);
+        widgetHolder = new WidgetHolder(this);
         widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
         setHistoryDisplayTextView();
 
         // Для поворота экрана
         if (savedInstanceState != null) {
-            textMainDisplay = savedInstanceState.getString(KEY_COUNT1);
-            result = savedInstanceState.getString(KEY_COUNT2);
-            isPressPlus = savedInstanceState.getBoolean(KEY_COUNT3);
+            textMainDisplay = savedInstanceState.getString(Strings.KEY_COUNT1);
+            result = savedInstanceState.getString(Strings.KEY_COUNT2);
+            isPressPlus = savedInstanceState.getBoolean(Strings.KEY_COUNT3);
             widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
         } else {
             textMainDisplay = "0";
@@ -422,13 +417,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected final void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putString(KEY_COUNT1, textMainDisplay);
-        savedInstanceState.putString(KEY_COUNT2, result);
-        savedInstanceState.putBoolean(KEY_COUNT3, isPressPlus);
+        savedInstanceState.putString(Strings.KEY_COUNT1, textMainDisplay);
+        savedInstanceState.putString(Strings.KEY_COUNT2, result);
+        savedInstanceState.putBoolean(Strings.KEY_COUNT3, isPressPlus);
     }
 
     private void setHistoryDisplayTextView() {
-        WidgetHolder widgetHolder = new WidgetHolder(this);
         widgetHolder.getHistoryDisplayTextView().setText("number1=" + number1 + " number2=" +
                 number2 + " result=" + result + " resultDouble=" +
                 resultDouble + " numberDouble1=" + numberDouble1 +
