@@ -1,106 +1,51 @@
 package com.example.haystackcalculator;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.widget.Button;
 
-
-
 public class MainActivity extends AppCompatActivity {
-    //   private double numberDouble1, numberDouble2, resultDouble, was;
-    private WidgetHolder widgetHolder;
-    private LogicHolder logicHolder;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
 
-        widgetHolder = new WidgetHolder(this);
-      //  logicHolder = new LogicHolder();
-        logicHolder.setMainDisplay();
-        setHistoryDisplayTextView();
+        WidgetHolder widgetHolder = new WidgetHolder(this);
+        LogicHolder logicHolder = new LogicHolder();
 
-        // Для поворота экрана
-        if (savedInstanceState != null) {
-            Strings.textMainDisplay = savedInstanceState.getString(Strings.KEY_COUNT1);
-            Strings.result = savedInstanceState.getString(Strings.KEY_COUNT2);
-            logicHolder.isPressPlus = savedInstanceState.getBoolean(Strings.KEY_COUNT3);
-            logicHolder.setMainDisplay();
-        } else {
-            Strings.textMainDisplay = "0";
-            logicHolder.setMainDisplay();
-        }
+        logicHolder.setMainDisplay();
+        WidgetHolder.setHistoryDisplayTextView();
 
         widgetHolder.getAllCleanButton().setOnClickListener(v -> {
-            logicHolder.cleaning();
-            setHistoryDisplayTextView();
+            logicHolder.clear();
         });
 
         widgetHolder.getDelButton().setOnClickListener(v -> {
-            logicHolder.deletion();
-            setHistoryDisplayTextView();
+            logicHolder.delete();
         });
-
         widgetHolder.getChangeSignButton().setOnClickListener(v -> {
             logicHolder.changeSign();
-            setHistoryDisplayTextView();
         });
-        widgetHolder.getDivisionButton().setOnClickListener(v -> {
-            logicHolder.division(v);
-            setHistoryDisplayTextView();
-        });
+        widgetHolder.getDivisionButton().setOnClickListener(logicHolder::divide);
 
-        widgetHolder.getMultiplicationButton().setOnClickListener(v -> {
-            logicHolder.multiplication(v);
-            setHistoryDisplayTextView();
-        });
+        widgetHolder.getMultiplicationButton().setOnClickListener(logicHolder::multiply);
 
-        widgetHolder.getMinusButton().setOnClickListener(v -> {
-            logicHolder.subtraction(v);
-            setHistoryDisplayTextView();
-        });
+        widgetHolder.getMinusButton().setOnClickListener(logicHolder::subtract);
 
-        widgetHolder.getPlusButton().setOnClickListener(v -> {
-            logicHolder.summarize(v);
-            setHistoryDisplayTextView();
-        });
+        widgetHolder.getPlusButton().setOnClickListener(logicHolder::summarize);
 
         widgetHolder.getEqualsButton().setOnClickListener(v -> {
-            logicHolder.calculate();
-            setHistoryDisplayTextView();
+            logicHolder.equal();
         });
 
         widgetHolder.getDotButton().setOnClickListener(v -> {
             logicHolder.putDot();
-            setHistoryDisplayTextView();
         });
 
-
         for (Button button : widgetHolder.getButtons()) {
-            button.setOnClickListener(v -> {
-                logicHolder.choosePressedId(v);
-                setHistoryDisplayTextView();
-            });
+            button.setOnClickListener(logicHolder::choosePressedId);
         }
-    }
-
-
-    // Для поворота экрана
-    @Override
-    protected final void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putString(Strings.KEY_COUNT1, Strings.textMainDisplay);
-        savedInstanceState.putString(Strings.KEY_COUNT2, Strings.result);
-        savedInstanceState.putBoolean(Strings.KEY_COUNT3, logicHolder.isPressPlus);// Plus исправить
-    }
-
-    private void setHistoryDisplayTextView() {
-        widgetHolder.getHistoryDisplayTextView().setText("number1=" + Strings.number1 + " number2=" +
-                Strings.number2 + " result=" + Strings.result + " resultDouble=" +
-                logicHolder.resultDouble + " numberDouble1=" + logicHolder.numberDouble1 +
-                " numberDouble2=" + logicHolder.numberDouble2 + " textMainDisplay=" + Strings.textMainDisplay);
     }
 
 
@@ -167,6 +112,4 @@ public class MainActivity extends AppCompatActivity {
             default:
         }*/
 
-
 }
-

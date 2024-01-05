@@ -10,15 +10,15 @@ import java.util.Collections;
 
 class WidgetHolder {
 
-    private final TextView historyDisplayTextView, mainDisplayTextView;
-    private final Button button1, button2, button3, button4,
-            button5, button6, button7, button8, button9, button0,
+    protected static TextView historyDisplayTextView, mainDisplayTextView;
+    private final Button
             allCleanButton, delButton, divisionButton, changeSignButton, multiplicationButton,
             minusButton, plusButton, equalsButton, dotButton;
    public final ArrayList<Button> buttons = new ArrayList<>();
 
     public WidgetHolder(AppCompatActivity context) {
-
+        Button button0, button1, button2, button3, button4,
+               button5, button6, button7, button8, button9 ;
         // находим элементы
         historyDisplayTextView = context.findViewById(R.id.history);
         mainDisplayTextView = context.findViewById(R.id.result);
@@ -43,7 +43,6 @@ class WidgetHolder {
         button9 = context.findViewById(R.id.button9);
         button0 = context.findViewById(R.id.button0);
 
-
         Collections.addAll(buttons, button0, button1, button2, button3, button4,
                 button5, button6, button7, button8, button9);
     }
@@ -51,11 +50,11 @@ class WidgetHolder {
         return buttons;
     }
 
-    public TextView getHistoryDisplayTextView() {
+    public static TextView getHistoryDisplayTextView() {
         return historyDisplayTextView;
     }
 
-    public TextView getMainDisplayTextView() {
+    public static TextView getMainDisplayTextView() {
         return mainDisplayTextView;
     }
 
@@ -93,6 +92,13 @@ class WidgetHolder {
 
     public Button getDotButton() {
         return dotButton;
+    }
+
+    protected static void setHistoryDisplayTextView() {
+        getHistoryDisplayTextView().setText("number1=" + LogicHolder.number1 + " number2=" +
+                LogicHolder.number2 + " result=" + LogicHolder.result + " resultDouble=" +
+                LogicHolder.resultDouble + " numberDouble1=" + LogicHolder.numberDouble1 +
+                " numberDouble2=" + LogicHolder.numberDouble2 + " textMainDisplay=" + LogicHolder.textMainDisplay);
     }
 
 }
