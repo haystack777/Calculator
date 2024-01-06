@@ -6,6 +6,5 @@ public class Strings {
     static final String KEY_COUNT2 = "COUNT2";
     static final String KEY_COUNT3 = "COUNT3";
 
-    //
-
+    static final String error = "ОШИБКА";
 }
