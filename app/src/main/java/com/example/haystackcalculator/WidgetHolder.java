@@ -94,11 +94,6 @@ class WidgetHolder {
         return dotButton;
     }
 
-    protected static void setHistoryDisplayTextView() {
-        getHistoryDisplayTextView().setText("number1=" + LogicHolder.number1 + " number2=" +
-                LogicHolder.number2 + " result=" + LogicHolder.result + " resultDouble=" +
-                LogicHolder.resultDouble + " numberDouble1=" + LogicHolder.numberDouble1 +
-                " numberDouble2=" + LogicHolder.numberDouble2 + " textMainDisplay=" + LogicHolder.textMainDisplay);
-    }
+
 
 }

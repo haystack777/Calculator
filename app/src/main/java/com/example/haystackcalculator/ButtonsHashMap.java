@@ -18,7 +18,12 @@ public class ButtonsHashMap {
             put(R.id.button9, "9");
         }
     };
+
+    public static HashMap<Integer, String> getButtonIdsMap() {
+        return buttonIdsMap;
+    }
 }
+
 
 
 

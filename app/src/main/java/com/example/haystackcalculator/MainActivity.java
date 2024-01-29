@@ -12,10 +12,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main4);
 
         WidgetHolder widgetHolder = new WidgetHolder(this);
-        LogicHolder logicHolder = new LogicHolder();
+        LogicHolder logicHolder = new LogicHolder(widgetHolder);
 
         logicHolder.setMainDisplay();
-        WidgetHolder.setHistoryDisplayTextView();
+        logicHolder.setHistoryDisplayTextView();
 
         widgetHolder.getAllCleanButton().setOnClickListener(v -> {
             logicHolder.clear();
