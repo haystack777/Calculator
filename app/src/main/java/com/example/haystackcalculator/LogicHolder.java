@@ -1,5 +1,6 @@
 package com.example.haystackcalculator;
 
+import android.annotation.SuppressLint;
 import android.view.View;
 
 import java.text.DecimalFormat;
@@ -17,12 +18,11 @@ public class LogicHolder {
     }
 
 
-
-    public void choosePressedId (View ignoredV){
+    public void choosePressedId (View v){
         if (textMainDisplay.equals("0")) {
             textMainDisplay = "";
         }
-        textMainDisplay += ButtonsHashMap.getButtonIdsMap();
+       textMainDisplay += ButtonsHashMap.buttonIdsMap.get(v.getId());
         setMainDisplay();
     }
 
@@ -374,6 +374,7 @@ public class LogicHolder {
             return number1;
         }
 
+        @SuppressLint("SetTextI18n")
         public void setHistoryDisplayTextView() {
             widgetHolder.getHistoryDisplayTextView().setText("number1=" + number1 + " number2=" +
                     number2 + " result=" + result + " resultDouble=" +

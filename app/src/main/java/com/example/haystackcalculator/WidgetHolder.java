@@ -10,7 +10,7 @@ import java.util.Collections;
 
 class WidgetHolder {
 
-    protected static TextView historyDisplayTextView, mainDisplayTextView;
+    public TextView historyDisplayTextView, mainDisplayTextView;
     private final Button
             allCleanButton, delButton, divisionButton, changeSignButton, multiplicationButton,
             minusButton, plusButton, equalsButton, dotButton;
@@ -50,11 +50,11 @@ class WidgetHolder {
         return buttons;
     }
 
-    public static TextView getHistoryDisplayTextView() {
+    public TextView getHistoryDisplayTextView() {
         return historyDisplayTextView;
     }
 
-    public static TextView getMainDisplayTextView() {
+    public TextView getMainDisplayTextView() {
         return mainDisplayTextView;
     }
 

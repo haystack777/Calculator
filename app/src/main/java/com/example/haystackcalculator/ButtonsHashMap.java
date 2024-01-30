@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class ButtonsHashMap {
     // Создание мапы кнопок и соответствующих числовых значений
-    static HashMap<Integer, String> buttonIdsMap = new HashMap<Integer, String>() {
+    final static HashMap<Integer, String> buttonIdsMap = new HashMap<Integer, String>() {
         {
             put(R.id.button0, "0");
             put(R.id.button1, "1");
@@ -18,12 +18,4 @@ public class ButtonsHashMap {
             put(R.id.button9, "9");
         }
     };
-
-    public static HashMap<Integer, String> getButtonIdsMap() {
-        return buttonIdsMap;
-    }
 }
-
-
-
-
