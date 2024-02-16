@@ -1,15 +1,23 @@
-package com.example.haystackcalculator;
+package com.example.haystackcalculator.MainActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-import android.widget.Button;
+import com.example.haystackcalculator.AboutApp.AboutAppActivity;
+import com.example.haystackcalculator.R;
+
 
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main4);
+        setContentView(R.layout.activity_main);
 
         WidgetHolder widgetHolder = new WidgetHolder(this);
         LogicHolder logicHolder = new LogicHolder(widgetHolder);
@@ -46,7 +54,37 @@ public class MainActivity extends AppCompatActivity {
         for (Button button : widgetHolder.getButtons()) {
             button.setOnClickListener(logicHolder::choosePressedId);
         }
+
+
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem menuItem = menu.findItem(R.id.About_program);
+        menuItem.setOnMenuItemClickListener(item -> {
+            // Выполните код для вызова новой активити
+            Intent intent = new Intent(MainActivity.this, AboutAppActivity.class);
+            startActivity(intent);
+            return true;
+        });
+
+
+
+        return true;
+    }
+    public void moveToAboutApp(View view){
+        Intent intent = new Intent(MainActivity.this, AboutAppActivity.class);
+        startActivity(intent);
+    }
+
+
+
+
+
+
+
+
 
 
     //  LastOperation lastPressOperation = LastOperation.PRESSEDEQUALS;

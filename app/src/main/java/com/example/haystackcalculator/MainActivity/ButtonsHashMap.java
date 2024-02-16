@@ -1,4 +1,6 @@
-package com.example.haystackcalculator;
+package com.example.haystackcalculator.MainActivity;
+
+import com.example.haystackcalculator.R;
 
 import java.util.HashMap;
 

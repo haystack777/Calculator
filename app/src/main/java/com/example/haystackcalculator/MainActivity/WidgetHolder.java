@@ -1,9 +1,11 @@
-package com.example.haystackcalculator;
+package com.example.haystackcalculator.MainActivity;
 
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.haystackcalculator.R;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package com.example.haystackcalculator;
+package com.example.haystackcalculator.MainActivity;
 
 public class Strings {
     //Ключи для поворота экрана
