@@ -13,15 +13,15 @@ public class AboutAppActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        AboutAppActivityWidgetHolder aboutAppActivityWidgetHolder = new AboutAppActivityWidgetHolder(this);
-        AboutAppActivityLogicHolder aboutAppActivityLogicHolder =
-                new AboutAppActivityLogicHolder(aboutAppActivityWidgetHolder);
+        AboutAppActivityWidgetHolder widgetHolder = new AboutAppActivityWidgetHolder(this);
 
-        aboutAppActivityWidgetHolder.getMoveToGitHub().
-                setOnClickListener(aboutAppActivityLogicHolder::moveToGitHub);
+        AboutAppActivityLogicHolder logicHolder = new AboutAppActivityLogicHolder( this);
 
-        aboutAppActivityWidgetHolder.getWriteToDevloperButton().
-                setOnClickListener(aboutAppActivityLogicHolder::writeToDeveloper);
+        widgetHolder.getMoveToGitHubButton().
+                setOnClickListener(logicHolder::moveToGitHub);
+
+        widgetHolder.getWriteToDevloperButton().
+                setOnClickListener(logicHolder::writeToDeveloper);
 
     }
 

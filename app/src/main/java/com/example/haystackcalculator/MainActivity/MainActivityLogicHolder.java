@@ -3,8 +3,7 @@ package com.example.haystackcalculator.MainActivity;
 import android.annotation.SuppressLint;
 import android.view.View;
 
-import com.example.haystackcalculator.Calculator;
-import com.example.haystackcalculator.Operation;
+import com.example.haystackcalculator.Strings;
 
 import java.text.DecimalFormat;
 
@@ -14,14 +13,14 @@ public class MainActivityLogicHolder {
     public String number1 = "", number2 = "", result = "";
     public double numberDouble1, numberDouble2, resultDouble, was;
     protected boolean isPressDivision, isPressMultiplication, isPressMinus, isPressPlus, isPressEquals;
-    public Operation operation = Operation.NONE;
+    public MainActivityOperation mainActivityOperation = MainActivityOperation.NONE;
     public MainActivityWidgetHolder mainActivityWidgetHolder;
 
     public MainActivityLogicHolder(MainActivityWidgetHolder mainActivityWidgetHolder) {
         this.mainActivityWidgetHolder = mainActivityWidgetHolder;
     }
 
-    public Calculator calculator = new Calculator();
+    public MainActivityCalculator mainActivityCalculator = new MainActivityCalculator();
 
 
     public void choosePressedId(View v) {
@@ -87,11 +86,11 @@ public class MainActivityLogicHolder {
         // условие 6/2/ → 3/ → 3 3 3 3 3
         // основное вычисление
         if (!number2.equals("") & !number2.equals("0")) {
-            shet(Operation.SUBTRACTION);
+            shet(MainActivityOperation.SUBTRACTION);
         }
 
         if (number2.equals("0")) {
-            mainActivityWidgetHolder.getMainDisplayTextView().setText(MainActivityStrings.error);
+            mainActivityWidgetHolder.getMainDisplayTextView().setText(Strings.error);
         }
 
         // условие - результат вычисляется с новым введённым числом
@@ -102,17 +101,17 @@ public class MainActivityLogicHolder {
 
         if (isPressDivision & !number1.equals("") & !number2.equals("") &
                 !number1.equals(result) & textMainDisplay.equals("")) {
-            shet(Operation.DIVISION);
+            shet(MainActivityOperation.DIVISION);
         }
         if (was == 1 & !number1.equals("") & !number2.equals("")) {
             textMainDisplay = "0";
-            shet(Operation.SUMMATION);
+            shet(MainActivityOperation.SUMMATION);
         }
         if (was == 2 & !number1.equals("") & !number2.equals("")) {
-            shet(Operation.SUBTRACTION);
+            shet(MainActivityOperation.SUBTRACTION);
         }
         if (was == 3 & !number1.equals("") & !number2.equals("")) {
-            shet(Operation.MULTIPLICATION);
+            shet(MainActivityOperation.MULTIPLICATION);
         }
         // условие 1+2= → 3+4 = → 7 = → 11
         if (/*isPressPlus & */!result.equals(number2)) {
@@ -121,7 +120,7 @@ public class MainActivityLogicHolder {
 
         textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
         isPressDivision = true;
-        lastPressOperation(Operation.PRESSDEVISION);
+        lastPressOperation(MainActivityOperation.PRESSDEVISION);
         setHistoryDisplayTextView();
     }
 
@@ -135,17 +134,17 @@ public class MainActivityLogicHolder {
 
         if (isPressMultiplication & !number1.equals("") & !number2.equals("") &
                 !number1.equals(result) & textMainDisplay.equals("")) {
-            shet(Operation.MULTIPLICATION);
+            shet(MainActivityOperation.MULTIPLICATION);
         }
         if (was == 1 & !number1.equals("") & !number2.equals("")) {
             textMainDisplay = "0";
-            shet(Operation.SUMMATION);
+            shet(MainActivityOperation.SUMMATION);
         }
         if (was == 2 & !number1.equals("") & !number2.equals("")) {
-            shet(Operation.SUBTRACTION);
+            shet(MainActivityOperation.SUBTRACTION);
         }
         if (was == 4 & !number1.equals("") & !number2.equals("")) {
-            shet(Operation.DIVISION);
+            shet(MainActivityOperation.DIVISION);
         }
 
         // условие 1+2= → 3+4 = → 7 = → 11
@@ -154,7 +153,7 @@ public class MainActivityLogicHolder {
         }
         textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
         isPressMultiplication = true;
-        lastPressOperation(Operation.PRESSMULTIPLICATION);
+        lastPressOperation(MainActivityOperation.PRESSMULTIPLICATION);
         setHistoryDisplayTextView();
     }
 
@@ -169,17 +168,17 @@ public class MainActivityLogicHolder {
 
         if (isPressMinus & !number1.equals("") & !number2.equals("") &
                 !number1.equals(result) & textMainDisplay.equals("")) {
-            shet(Operation.SUBTRACTION);
+            shet(MainActivityOperation.SUBTRACTION);
         }
         if (was == 1 & !number1.equals("") & !number2.equals("")) {
             textMainDisplay = "0";
-            shet(Operation.SUMMATION);
+            shet(MainActivityOperation.SUMMATION);
         }
         if (was == 3 & !number1.equals("") & !number2.equals("")) {
-            shet(Operation.DIVISION);
+            shet(MainActivityOperation.DIVISION);
         }
         if (was == 4 & !number1.equals("") & !number2.equals("")) {
-            shet(Operation.MULTIPLICATION);
+            shet(MainActivityOperation.MULTIPLICATION);
         }
         // условие 1+2= → 3+4 = → 7 = → 11
         if (/*isPressPlus & */!result.equals(number2)) {
@@ -187,7 +186,7 @@ public class MainActivityLogicHolder {
         }
         textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
         isPressMinus = true;
-        lastPressOperation(Operation.PRESSMINUS);
+        lastPressOperation(MainActivityOperation.PRESSMINUS);
         setHistoryDisplayTextView();
     }
 
@@ -201,17 +200,17 @@ public class MainActivityLogicHolder {
 
         if (isPressPlus & !number1.equals("") & !number2.equals("") &
                 !number1.equals(result) & !textMainDisplay.equals("")) {
-            shet(Operation.SUMMATION);
+            shet(MainActivityOperation.SUMMATION);
         }
         if (was == 2 & !number1.equals("") & !number2.equals("")) {
             textMainDisplay = "0";
-            shet(Operation.SUBTRACTION);
+            shet(MainActivityOperation.SUBTRACTION);
         }
         if (was == 3 & !number1.equals("") & !number2.equals("")) {
-            shet(Operation.DIVISION);
+            shet(MainActivityOperation.DIVISION);
         }
         if (was == 4 & !number1.equals("") & !number2.equals("")) {
-            shet(Operation.MULTIPLICATION);
+            shet(MainActivityOperation.MULTIPLICATION);
         }
         // условие 1+2= → 3+4 = → 7 = → 11
         if (isPressPlus & !result.equals(number2)) {
@@ -220,7 +219,7 @@ public class MainActivityLogicHolder {
         textMainDisplay = ""; //после вывода результата,новое число выводится на новом экране
         isPressPlus = true;
         // operation = isPressPlus (Operation.SUMMATION);
-        lastPressOperation(Operation.PRESSPLUS);
+        lastPressOperation(MainActivityOperation.PRESSPLUS);
         setHistoryDisplayTextView();
     }
 
@@ -275,25 +274,25 @@ public class MainActivityLogicHolder {
         if (was == 1 & !number1.equals("") & !number2.equals("")) {
             numberDouble1 = convertStringToDouble(number1);
             numberDouble2 = convertStringToDouble(number2);
-            double x2 = calculator.calculate(Operation.SUMMATION, numberDouble1, numberDouble2);
+            double x2 = mainActivityCalculator.calculate(MainActivityOperation.SUMMATION, numberDouble1, numberDouble2);
             setResultMainDisplay(x2);
         }
         if (was == 2 & !number1.equals("") & !number2.equals("")) {
             numberDouble1 = convertStringToDouble(number1);
             numberDouble2 = convertStringToDouble(number2);
-            double x2 = calculator.calculate(Operation.SUBTRACTION, numberDouble1, numberDouble2);
+            double x2 = mainActivityCalculator.calculate(MainActivityOperation.SUBTRACTION, numberDouble1, numberDouble2);
             setResultMainDisplay(x2);
         }
         if (was == 3 & !number1.equals("") & !number2.equals("")) {
             numberDouble1 = convertStringToDouble(number1);
             numberDouble2 = convertStringToDouble(number2);
-            double x2 = calculator.calculate(Operation.MULTIPLICATION, numberDouble1, numberDouble2);
+            double x2 = mainActivityCalculator.calculate(MainActivityOperation.MULTIPLICATION, numberDouble1, numberDouble2);
             setResultMainDisplay(x2);
         }
         if (was == 4 & !number1.equals("") & !number2.equals("")) {
             numberDouble1 = convertStringToDouble(number1);
             numberDouble2 = convertStringToDouble(number2);
-            double x2 = calculator.calculate(Operation.DIVISION, numberDouble1, numberDouble2);
+            double x2 = mainActivityCalculator.calculate(MainActivityOperation.DIVISION, numberDouble1, numberDouble2);
             setResultMainDisplay(x2);
         }
         //Должно стоять здесь
@@ -303,7 +302,7 @@ public class MainActivityLogicHolder {
         }
         textMainDisplay = ""; //после вывода равенства,новое число выводится на новом экране
         isPressEquals = true;
-        lastPressOperation(Operation.PRESSEQUALS);
+        lastPressOperation(MainActivityOperation.PRESSEQUALS);
         setHistoryDisplayTextView();
     }
 
@@ -313,8 +312,8 @@ public class MainActivityLogicHolder {
         setMainDisplay();
     }
 
-    public void lastPressOperation(Operation lastOperation) {
-        switch (lastOperation) {
+    public void lastPressOperation(MainActivityOperation lastMainActivityOperation) {
+        switch (lastMainActivityOperation) {
             case PRESSPLUS:
                 was = 1;
                 break;
@@ -419,10 +418,10 @@ public class MainActivityLogicHolder {
         }
     }
 
-    private void shet(Operation x) {
+    private void shet(MainActivityOperation x) {
         numberDouble1 = convertStringToDouble(number1);
         numberDouble2 = convertStringToDouble(number2);
-        double x2 = calculator.calculate(x, numberDouble1, numberDouble2);
+        double x2 = mainActivityCalculator.calculate(x, numberDouble1, numberDouble2);
         setResultMainDisplay(x2);
     }
 

@@ -8,21 +8,20 @@ import com.example.haystackcalculator.R;
 
 class AboutAppActivityWidgetHolder {
 
-    private final Button moveToGitHub, writeToDeveloper;
+    private final Button moveToGitHubButton, writeToDeveloperButton;
 
 
     public AboutAppActivityWidgetHolder(AppCompatActivity context) {
-        moveToGitHub = context.findViewById(R.id.codeGit);
-        writeToDeveloper = context.findViewById(R.id.writeDeveloper);
+        moveToGitHubButton = context.findViewById(R.id.codeGit);
+        writeToDeveloperButton = context.findViewById(R.id.writeDeveloper);
     }
 
-    public Button getMoveToGitHub() {
-        return moveToGitHub;
+    public Button getMoveToGitHubButton() {
+        return moveToGitHubButton;
     }
 
     public Button getWriteToDevloperButton() {
-        return writeToDeveloper;
+        return writeToDeveloperButton;
     }
-
 
 }

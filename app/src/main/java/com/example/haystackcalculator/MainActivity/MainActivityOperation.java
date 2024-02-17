@@ -1,6 +1,6 @@
-package com.example.haystackcalculator;
+package com.example.haystackcalculator.MainActivity;
 
-public enum Operation {
+public enum MainActivityOperation {
     DIVISION,
     MULTIPLICATION,
     SUBTRACTION,

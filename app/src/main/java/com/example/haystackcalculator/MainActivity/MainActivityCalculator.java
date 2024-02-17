@@ -1,12 +1,9 @@
-package com.example.haystackcalculator;
+package com.example.haystackcalculator.MainActivity;
 
-import android.graphics.Path;
-import android.view.View;
+public class MainActivityCalculator {
 
-public class Calculator {
-
-    public Double calculate(Operation operation, double num1, double num2) {
-        switch (operation) {
+    public Double calculate(MainActivityOperation mainActivityOperation, double num1, double num2) {
+        switch (mainActivityOperation) {
             case DIVISION:
                 return num1 / num2;
             case MULTIPLICATION:
