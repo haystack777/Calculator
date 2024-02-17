@@ -10,15 +10,14 @@ import com.example.haystackcalculator.R;
 import java.util.ArrayList;
 import java.util.Collections;
 
-class WidgetHolder {
-
+public class MainActivityWidgetHolder {
     public TextView historyDisplayTextView, mainDisplayTextView;
     private final Button
             allCleanButton, delButton, divisionButton, changeSignButton, multiplicationButton,
             minusButton, plusButton, equalsButton, dotButton;
    public final ArrayList<Button> buttons = new ArrayList<>();
 
-    public WidgetHolder(AppCompatActivity context) {
+    public MainActivityWidgetHolder(AppCompatActivity context) {
         Button button0, button1, button2, button3, button4,
                button5, button6, button7, button8, button9 ;
         // находим элементы

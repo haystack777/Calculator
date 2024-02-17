@@ -1,6 +1,6 @@
 package com.example.haystackcalculator.MainActivity;
 
-public class Strings {
+public class MainActivityStrings {
     //Ключи для поворота экрана
     static final String KEY_COUNT1 = "COUNT1";
     static final String KEY_COUNT2 = "COUNT2";

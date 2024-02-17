@@ -19,42 +19,41 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        WidgetHolder widgetHolder = new WidgetHolder(this);
-        LogicHolder logicHolder = new LogicHolder(widgetHolder);
+        MainActivityWidgetHolder mainActivityWidgetHolder = new MainActivityWidgetHolder(this);
+        MainActivityLogicHolder mainActivityLogicHolder = new MainActivityLogicHolder(mainActivityWidgetHolder);
 
-        logicHolder.setMainDisplay();
-        logicHolder.setHistoryDisplayTextView();
+        mainActivityLogicHolder.setMainDisplay();
+        mainActivityLogicHolder.setHistoryDisplayTextView();
 
-        widgetHolder.getAllCleanButton().setOnClickListener(v -> {
-            logicHolder.clear();
+        mainActivityWidgetHolder.getAllCleanButton().setOnClickListener(v -> {
+            mainActivityLogicHolder.clear();
         });
 
-        widgetHolder.getDelButton().setOnClickListener(v -> {
-            logicHolder.delete();
+        mainActivityWidgetHolder.getDelButton().setOnClickListener(v -> {
+            mainActivityLogicHolder.delete();
         });
-        widgetHolder.getChangeSignButton().setOnClickListener(v -> {
-            logicHolder.changeSign();
+        mainActivityWidgetHolder.getChangeSignButton().setOnClickListener(v -> {
+            mainActivityLogicHolder.changeSign();
         });
-        widgetHolder.getDivisionButton().setOnClickListener(logicHolder::divide);
+        mainActivityWidgetHolder.getDivisionButton().setOnClickListener(mainActivityLogicHolder::divide);
 
-        widgetHolder.getMultiplicationButton().setOnClickListener(logicHolder::multiply);
+        mainActivityWidgetHolder.getMultiplicationButton().setOnClickListener(mainActivityLogicHolder::multiply);
 
-        widgetHolder.getMinusButton().setOnClickListener(logicHolder::subtract);
+        mainActivityWidgetHolder.getMinusButton().setOnClickListener(mainActivityLogicHolder::subtract);
 
-        widgetHolder.getPlusButton().setOnClickListener(logicHolder::summarize);
+        mainActivityWidgetHolder.getPlusButton().setOnClickListener(mainActivityLogicHolder::summarize);
 
-        widgetHolder.getEqualsButton().setOnClickListener(v -> {
-            logicHolder.equal();
-        });
-
-        widgetHolder.getDotButton().setOnClickListener(v -> {
-            logicHolder.putDot();
+        mainActivityWidgetHolder.getEqualsButton().setOnClickListener(v -> {
+            mainActivityLogicHolder.equal();
         });
 
-        for (Button button : widgetHolder.getButtons()) {
-            button.setOnClickListener(logicHolder::choosePressedId);
+        mainActivityWidgetHolder.getDotButton().setOnClickListener(v -> {
+            mainActivityLogicHolder.putDot();
+        });
+
+        for (Button button : mainActivityWidgetHolder.getButtons()) {
+            button.setOnClickListener(mainActivityLogicHolder::choosePressedId);
         }
-
 
     }
 

@@ -4,7 +4,7 @@ import com.example.haystackcalculator.R;
 
 import java.util.HashMap;
 
-public class ButtonsHashMap {
+public class MainActivityButtonsHashMap {
     // Создание мапы кнопок и соответствующих числовых значений
     final static HashMap<Integer, String> buttonIdsMap = new HashMap<Integer, String>() {
         {

@@ -8,17 +8,17 @@ import com.example.haystackcalculator.Operation;
 
 import java.text.DecimalFormat;
 
-public class LogicHolder {
+public class MainActivityLogicHolder {
     private String textMainDisplay = "0";
     public String var1 = "", result1 = "";
     public String number1 = "", number2 = "", result = "";
     public double numberDouble1, numberDouble2, resultDouble, was;
     protected boolean isPressDivision, isPressMultiplication, isPressMinus, isPressPlus, isPressEquals;
     public Operation operation = Operation.NONE;
-    public WidgetHolder widgetHolder;
+    public MainActivityWidgetHolder mainActivityWidgetHolder;
 
-    public LogicHolder(WidgetHolder widgetHolder) {
-        this.widgetHolder = widgetHolder;
+    public MainActivityLogicHolder(MainActivityWidgetHolder mainActivityWidgetHolder) {
+        this.mainActivityWidgetHolder = mainActivityWidgetHolder;
     }
 
     public Calculator calculator = new Calculator();
@@ -28,7 +28,7 @@ public class LogicHolder {
         if (textMainDisplay.equals("0")) {
             textMainDisplay = "";
         }
-        textMainDisplay += ButtonsHashMap.buttonIdsMap.get(v.getId());
+        textMainDisplay += MainActivityButtonsHashMap.buttonIdsMap.get(v.getId());
         setMainDisplay();
     }
 
@@ -37,7 +37,7 @@ public class LogicHolder {
         number1 = "";
         number2 = "";
         if (!textMainDisplay.equals("0")) {
-            widgetHolder.getMainDisplayTextView().setText(textMainDisplay = "0");
+            mainActivityWidgetHolder.getMainDisplayTextView().setText(textMainDisplay = "0");
             number1 = "";
             number2 = "";
             result = "";
@@ -51,10 +51,10 @@ public class LogicHolder {
 
     public void delete() {
         if (!textMainDisplay.equals("0") & textMainDisplay.length() > 0) {
-            widgetHolder.getMainDisplayTextView().setText(textMainDisplay = textMainDisplay.substring(0, textMainDisplay.length() - 1));
+            mainActivityWidgetHolder.getMainDisplayTextView().setText(textMainDisplay = textMainDisplay.substring(0, textMainDisplay.length() - 1));
         }
         if (textMainDisplay.equals("")) {
-            widgetHolder.getMainDisplayTextView().setText(textMainDisplay = "0");
+            mainActivityWidgetHolder.getMainDisplayTextView().setText(textMainDisplay = "0");
         }
         setHistoryDisplayTextView();
     }
@@ -91,7 +91,7 @@ public class LogicHolder {
         }
 
         if (number2.equals("0")) {
-            widgetHolder.getMainDisplayTextView().setText(Strings.error);
+            mainActivityWidgetHolder.getMainDisplayTextView().setText(MainActivityStrings.error);
         }
 
         // условие - результат вычисляется с новым введённым числом
@@ -385,7 +385,7 @@ public class LogicHolder {
 
 
     protected void setMainDisplay() {
-        widgetHolder.getMainDisplayTextView().setText(textMainDisplay);
+        mainActivityWidgetHolder.getMainDisplayTextView().setText(textMainDisplay);
     }
 
     private String getNumber1() {
@@ -394,7 +394,7 @@ public class LogicHolder {
 
     @SuppressLint("SetTextI18n")
     public void setHistoryDisplayTextView() {
-        widgetHolder.getHistoryDisplayTextView().setText(/*"result1=" + result1 + " var1=" + var1 +
+        mainActivityWidgetHolder.getHistoryDisplayTextView().setText(/*"result1=" + result1 + " var1=" + var1 +
          */ "was=" + was + " number1=" + number1 + " number2=" +
                 number2 + " result=" + result + " resultDouble=" +
                 resultDouble + " numberDouble1=" + numberDouble1 +
