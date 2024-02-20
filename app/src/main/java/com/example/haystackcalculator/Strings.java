@@ -13,4 +13,7 @@ public class Strings {
     public static final String subject="Hi, do you like HaystackCalculator?";
 
     public static final String content ="Hello, Anton!";
+
+
+
 }

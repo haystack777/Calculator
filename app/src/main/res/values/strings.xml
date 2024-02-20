@@ -1,9 +1,16 @@
 <resources>
     <string name="app_name">HaystackCalculator</string>
-    <string name="About_program">О программе</string>
+
+    <string name="About_program">About App</string>
+    <string name="Calculation_game">Calculation Game</string>
+    <string name="Operations_history">Operations History</string>
+
     <string name="Copyright_c_Haystack777_and_SkirdaD_2023">Copyright © Haystack777 and SkirdaD , 2023</string>
     <string name="code_on_github">CODE ON GITHUB</string>
     <string name="write_to_developer">Write to developer</string>
+
     <string name="calculator">Calculator</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- <string name="KEY_COUNT2">COUNT2</string>-->
 </resources>
