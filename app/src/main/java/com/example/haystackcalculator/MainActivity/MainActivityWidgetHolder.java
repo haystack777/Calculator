@@ -1,24 +1,25 @@
-package com.example.haystackcalculator;
+package com.example.haystackcalculator.MainActivity;
 
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.haystackcalculator.R;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
-class WidgetHolder {
-
-    private final TextView historyDisplayTextView, mainDisplayTextView;
-    private final Button button1, button2, button3, button4,
-            button5, button6, button7, button8, button9, button0,
+public class MainActivityWidgetHolder {
+    public TextView historyDisplayTextView, mainDisplayTextView;
+    private final Button
             allCleanButton, delButton, divisionButton, changeSignButton, multiplicationButton,
             minusButton, plusButton, equalsButton, dotButton;
    public final ArrayList<Button> buttons = new ArrayList<>();
 
-    public WidgetHolder(AppCompatActivity context) {
-
+    public MainActivityWidgetHolder(AppCompatActivity context) {
+        Button button0, button1, button2, button3, button4,
+               button5, button6, button7, button8, button9 ;
         // находим элементы
         historyDisplayTextView = context.findViewById(R.id.history);
         mainDisplayTextView = context.findViewById(R.id.result);
@@ -42,7 +43,6 @@ class WidgetHolder {
         button8 = context.findViewById(R.id.button8);
         button9 = context.findViewById(R.id.button9);
         button0 = context.findViewById(R.id.button0);
-
 
         Collections.addAll(buttons, button0, button1, button2, button3, button4,
                 button5, button6, button7, button8, button9);
@@ -94,5 +94,7 @@ class WidgetHolder {
     public Button getDotButton() {
         return dotButton;
     }
+
+
 
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity.MainActivity">
+    <item
+        android:id="@+id/about_program"
+        android:title="@string/About_program" />
+
+    <item
+        android:id="@+id/calculation_game"
+        android:orderInCategory="2"
+        android:title="@string/Calculation_game" />
+
+    <item
+        android:id="@+id/operations_history"
+        android:orderInCategory="3"
+        android:title="@string/Operations_history" />
+
+</menu>
