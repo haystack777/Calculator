@@ -1,20 +1,18 @@
-package com.example.haystackcalculator.AboutApp;
+package com.example.haystackcalculator.AboutApp.Fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.haystackcalculator.Strings;
 
+public class AboutAppFragmentLogicHolder {
+    //public AboutAppFragmentWidgetHolder aboutAppFragmentWidgetHolder;
+    public AboutAppFragment aboutContext;
 
-public class AboutAppActivityLogicHolder {
-    public AboutAppActivityWidgetHolder aboutAppActivityWidgetHolder;
-    public AppCompatActivity aboutContext;
-
-    public AboutAppActivityLogicHolder(AppCompatActivity context) {
+    // Конструктор принимает контекст и приводит его к AppCompatActivity
+    public AboutAppFragmentLogicHolder(AboutAppFragment context) {
         aboutContext = context;
     }
 
@@ -26,11 +24,10 @@ public class AboutAppActivityLogicHolder {
 
     @SuppressLint("IntentReset")
     public void writeToDeveloper(View ignoredView) {
-        Intent intentEmail = new Intent(Intent.ACTION_SEND, Uri.parse("mailto:"));
+        Intent intentEmail = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:"));
         intentEmail.putExtra(Intent.EXTRA_EMAIL, Strings.recipients);
         intentEmail.putExtra(Intent.EXTRA_SUBJECT, Strings.subject);
         intentEmail.putExtra(Intent.EXTRA_TEXT, Strings.content);
-        intentEmail.setType("text/plain");
         aboutContext.startActivity(Intent.createChooser(intentEmail, "Choose an email client from..."));
     }
 }
