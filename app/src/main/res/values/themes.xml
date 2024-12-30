@@ -21,8 +21,5 @@
         <item name="android:textColor">@color/title_color</item>
         <item name="android:fontFamily">monospace</item>
     </style>
-    <style name="Button.Operation_Symbol" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">@android:color/holo_orange_light</item>
-    </style>
 
 </resources>
